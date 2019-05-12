@@ -162,6 +162,14 @@
       display: none
     }
 
+    #qrcode-text-pad {
+        display: none;
+        width: 100vw;
+        position: relative;
+        left: -3vw;
+        top: 5vw;
+      }
+
     @media screen and (min-device-width: 750px) {
       body {
         background: url('./img/pad/qrcode.png') center center no-repeat;
@@ -173,11 +181,7 @@
       }
 
       #qrcode-text-pad {
-        display: none;
-        width: 100vw;
-        position: relative;
-        left: -3vw;
-        top: 5vw;
+        display: block
       }
     }
   </style>
@@ -280,6 +284,7 @@
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(jc, s);
       })();
+    }
   </script>
 </body>
 
