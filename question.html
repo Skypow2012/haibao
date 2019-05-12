@@ -282,7 +282,7 @@
         });
         })
     }
-        
+
     var _jcq = _jcq || [];
     _jcq.enableHeatmap = true;
     _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
@@ -294,6 +294,30 @@
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(jc, s);
     })();
+
+    $('.imgs img').on('click', function(){
+        var index = $(this).index();
+        switch (index) {
+            case 0:
+                _jcq.push(['_track', "bhv_lp_step01_answer01"]);
+                return;
+            case 0:
+                _jcq.push(['_track', "bhv_lp_step01_answer02"]);
+                return;
+            case 0:
+                _jcq.push(['_track', "bhv_lp_step01_answer03"]);
+                return;
+            case 0:
+                _jcq.push(['_track', "bhv_lp_step01_answer04"]);
+                return;
+            case 0:
+                _jcq.push(['_track', "bhv_lp_step01_answer05"]);
+                return;
+            case 0:
+                _jcq.push(['_track', "bhv_lp_step01_answer06"]);
+                return;
+        }
+    });
 </script>
 
 </html>

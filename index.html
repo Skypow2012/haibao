@@ -760,6 +760,22 @@
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(jc, s);
   })();
+  
+  $('.start').click(function(){
+    _jcq.push(['_track', "bhv_lp_age_gate_yes"]);
+});
+  
+  $('.cancel').click(function(){
+    _jcq.push(['_track', "bhv_lp_age_gate_no"]);
+  });
+  
+  $('.ruleBtn').click(function(){
+    _jcq.push(['_track', "bhv_lp_age_gate_tc"]);
+  });
+  
+  $('.screatBtn').click(function(){
+    _jcq.push(['_track', "bhv_lp_age_gate_privacy"]);
+  });
 </script>
 
 </html>
