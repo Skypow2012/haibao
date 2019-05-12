@@ -193,52 +193,79 @@
                 /*top: 5.2rem;*/
             }
         }
+        @media screen and (min-width: 750px) {
+      .imgs {
+        position: absolute;
+        left: 0;
+        top: 3.9rem;
+        width: 100%;
+        z-index: 10;
+      }
+      .q {
+        width: 100%;
+        background: #0000ff;
+        margin-top: .3rem;
+        overflow: hidden;
+        position: relative;
+        height: 6.15rem;
+      }
+      .box {
+        width: 4.8rem;
+        /* height: 8rem; */
+        position: relative;
+        left: 50%;
+        top: 49%;
+        margin: -3.5rem 0 0 -2.08rem;
+        z-index: 10;
+        font-family: 'GB';
+      }
+    }
     </style>
 </head>
 <body>
-    <div class="box">
-        <div class="text">
-            <!-- <div class="h4">这里有六款合你心情的风</div>
+  <div class="box">
+    <div class="text">
+      <!-- <div class="h4">这里有六款合你心情的风</div>
             <div class="h4">味糖浆你现在的心情是?</div> -->
-            <div class="tit"></div>
-        </div>
-        <div class="q">
-            <div class="fan"></div>
-        </div>
+      <div class="tit"></div>
     </div>
-    <div class='imgs'>
-      <img data-name='CHINABEAUTY' src='img/font/f1.png' />
-      <img data-name='BEACHBEAUTY' src='img/font/f2.png' />
-      <img data-name='GENTLEMAN' src='img/font/f3.png' />
-      <img data-name='JAPANESESWEETIE' src='img/font/f4.png' />
-      <img data-name='ROCKSTAR' src='img/font/f5.png' />
-      <img data-name='ITALIANORCHARD' src='img/font/f6.png' />
+    <div class="q">
+      <div class="fan"></div>
     </div>
-    <img src="./img/loading.png" alt="" class="load wobble animated">
+  </div>
+  <div class='imgs'>
+    <img data-name='CHINABEAUTY' src='img/font/f1.png' />
+    <img data-name='BEACHBEAUTY' src='img/font/f2.png' />
+    <img data-name='GENTLEMAN' src='img/font/f3.png' />
+    <img data-name='JAPANESESWEETIE' src='img/font/f4.png' />
+    <img data-name='ROCKSTAR' src='img/font/f5.png' />
+    <img data-name='ITALIANORCHARD' src='img/font/f6.png' />
+  </div>
+  <img src="./img/loading.png" alt="" class="load wobble animated">
 </body>
 <script src="./js/jq.min.js"></script>
 <script src="./js/loadImg.js"></script>
 <script>
-    $(document).on('touchmove', function(event) {
-      event.preventDefault();
-    });
-    window.onload=function () {
-        document.fonts.ready.then(function() {
-        var loader = new resLoader({
+  $(document).on('touchmove', function (event) {
+    event.preventDefault();
+  });
+  window.onload = function () {
+    document.fonts.ready.then(function () {
+      var loader = new resLoader({
         resources: [
-            './img/bg2-new.png',
-            './img/loading.png',
-            './img/bg-2green.png',
-            './img/bottle.png',
-            './img/question-tit.png'
+          './img/bg2-new.png',
+          './img/loading.png',
+          './img/bg-2green.png',
+          './img/bottle.png',
+          './img/question-tit.png'
         ],
         onStart: function (total) {
         },
         onProgress: function (current, total) {
         },
         onComplete: function (total) {
-            imgComplete = true;
-            $('body').show()
+          imgComplete = true;
+          $('body').show()
         }
         });
         loader.start();
@@ -256,16 +283,17 @@
     }
 </script>
 <script>
-    var _jcq = _jcq || [];
-    _jcq.enableHeatmap = true;
-    _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
-    _jcq.push(['_pageview']);
+  var _jcq = _jcq || [];
+  _jcq.enableHeatmap = true;
+  _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
+  _jcq.push(['_pageview']);
 
-    (function() {
+  (function () {
     var jc = document.createElement('script'); jc.async = true;
     jc.src = '//' + 'cdn.jice.io/js/jice.min.js';
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(jc, s);
-    })();
+  })();
 </script>
+
 </html>
