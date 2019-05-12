@@ -97,22 +97,22 @@
         }
         div,span,p{
             font-family: 'eng';
-            font-weight: blod
+            font-weight: blod;
         }
 
         html,
         body {
+            position: relative;
             width: 100%;
             height: 100%;
             width: 100vw;
             height: 100vh;
             overflow: hidden;
             background: #e42eff;
-            position: relative;
         }
 
         body {
-            background: url('./img/bg-21.png') center top no-repeat;
+            background: url('./img/bg-21.png') center -50px no-repeat;
             background-size: 100% auto;
             position: relative;
             display: flex;
@@ -125,7 +125,7 @@
             background: #271dfc;
             position: relative;
             left: 30px;
-            top: -0.35rem;
+            top: 0.5rem;
             padding: 8px;
             display: none;
         }
@@ -257,9 +257,22 @@
         .bot6{
             background: url('./img/benminghong.png') center no-repeat;
         }
-        
-        @media (min-width: 375px) {
-          
+
+        @media only screen and (min-device-width : 375px) and (max-device-width : 412px) {
+            .box {
+                top: 1.9rem;
+            }
+        }
+        @media only screen and (min-device-width : 412px) and (max-device-width : 768px) {
+            .box {
+                top: 0.5rem;
+            }
+        }
+        @media only screen and (min-device-width : 375px) and (min-device-height : 800px) {
+            .box {
+                top: -0.7rem;
+                /*top: 0rem;*/
+            }
         }
     </style>
 </head>
@@ -293,6 +306,8 @@
     <script src="./js/jq.min.js"></script>
     <script src="./js/loadImg.js"></script>
     <script>
+        alert($(window).width())
+        alert($(window).height())
         $(document).on('touchmove', function(event) {
           event.preventDefault();
         });

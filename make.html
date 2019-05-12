@@ -91,7 +91,7 @@
             src: url('./font/china/SourceHanSansCN-Medium.otf')
         }
         div,span,p{
-            font-family: 'eng';
+            /*font-family: 'eng';*/
         }
         html,
         body {
@@ -107,7 +107,7 @@
 
         body {
             display: none;
-            background: url('./img/bg-3.png') center top no-repeat;
+            background: url('./img/bg-3.png') center -50px no-repeat;
             background-size: 100% auto;
             position: relative;
             text-align: center;
@@ -440,9 +440,25 @@
             margin-top: .1rem
         }
         /* iphone 8 */
-        .ip8{
-            transform: scale(0.9);
+        .i/*p8{
              bottom: 1rem;
+        }*/
+
+        @media only screen and (min-device-width : 375px) and (max-device-width : 412px) {
+            .flex {
+                bottom: -1.5rem;
+            }
+        }
+        @media only screen and (min-device-width : 412px) and (max-device-width : 768px) {
+            .ip8 {
+                bottom: 1rem;
+            }
+        }
+        @media only screen and (min-device-width : 375px) and (min-device-height : 800px) {
+            .flex {
+                bottom: 3rem;
+                transform: scale(1.05);
+            }
         }
     </style>
 </head>

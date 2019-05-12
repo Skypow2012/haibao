@@ -83,7 +83,7 @@
         }
         body {
             display: none;
-            background: url('./img/bg2-new.png') center top no-repeat;
+            background: url('./img/bg2-new.png') center -50px no-repeat;
             background-size: 100% auto;
         }
         .box {
@@ -137,7 +137,7 @@
         .imgs {
           position: absolute;
           left: 0;
-          top: 4.9rem;
+          top: 4.5rem;
           width: 100%;
           z-index: 10;
         }
@@ -173,6 +173,25 @@
           .q {
             height: 6.4rem;
           }
+        }
+        @media only screen and (min-device-width : 375px) and (max-device-width : 412px) {
+            .imgs {
+                top: 4rem;
+            }
+        }
+        @media only screen and (min-device-width : 412px) and (max-device-width : 768px) {
+            /*.imgs {
+                top: 4.6rem;
+            }*/
+        }
+        @media only screen and (min-device-width : 375px) and (min-device-height : 800px) {
+            .box {
+                top: 6.3rem;
+            }
+            .imgs {
+                top: 5rem;
+                /*top: 5.2rem;*/
+            }
         }
     </style>
 </head>
@@ -227,13 +246,12 @@
         $('.ul .icon').removeClass('select');
         $('.imgs img').click(function () {
             $('.box').hide()
+            $('.imgs').hide()
             $('.load').show()
             var i = $(this).index()
             localStorage.setItem('select',i)
             sessionStorage.setItem("name", $(this).data('name'));
-            setTimeout(function () {
-                window.location.replace('animate.html');
-            }, 300);
+            window.location.replace('animate.html');
         });
         })
     }

@@ -131,13 +131,13 @@
         }
 
         .bg {
-            width: 220vw;
-            height: 220vw;
+            width: 235vw;
+            height: 235vw;
             background: url('./img/bg-1-1.jpg') no-repeat center;
             background-size: contain;
             position: relative;
-            top: -31vw;
-            left: -59vw;
+            top: -40vw;
+            left: -69vw;
             -webkit-perspective: 1000;
             -webkit-backface-visibility: hidden;
             perspective: 1000;
@@ -403,7 +403,6 @@
         }
 
         @media (min-width: 1024px) {
-
             html,
             body {
                 width: 1024px;
@@ -416,13 +415,37 @@
             html {
                 font-size: 80px;
             }
-
             .box {
                 top: 20%
             }
         }
         .displayNone{
             display: none;
+        }
+
+        @media only screen and (min-device-width : 375px) and (max-device-width : 412px) {
+            .bg {
+                top: -60vw;
+                left: -69vw;
+            }
+        }
+        @media only screen and (min-device-width : 412px) and (max-device-width : 768px) {
+            .text {
+                /*top: 460px;*/
+            }
+            .bg {
+                top: -50vw;
+                left: -69vw;
+            }
+        }
+        @media only screen and (min-device-width : 375px) and (min-device-height : 800px) {
+            .text {
+                /*top: 560px;*/
+            }
+            .bg {
+                top: -40vw;
+                left: -69vw;
+            }
         }
     </style>
 </head>
@@ -475,7 +498,9 @@
             </div>
             <div class="text-center con">活动细则</div>
             <div class="">
-                <span class="blod">• 活动主题/ ACTIVITY THEME 【绝对伏特加出界实验室】 参与方式/ WAYS OF PARTICIPATION</span>
+                <span class="blod">• 活动主题/ ACTIVITY THEME</span><br />
+                <span class="blod">•【绝对伏特加出界实验室】</span><br />
+                <span class="blod">• 参与方式/ WAYS OF PARTICIPATION</span>
                 <br>
                 即日起至2019年7月7日23:59，微信登陆绝对伏特加官方微信公众平台“绝对伏特加”（微信搜索AbsolutVodka_China），通过菜单栏进入【绝对伏特加出界实验室】H5，答题结束后根据结果页提示，进入保乐力加Drinks & Co.中即有机会获得奖品兑换券。
                 <br><br>
@@ -612,7 +637,6 @@
 <script src="./js/jq.min.js"></script>
 <script src="./js/loadImg.js"></script>
 <script>
-    // alert($(window).width(),$(window).height());
     $('.page').on('touchmove', function(event) {
       event.preventDefault();
     });
