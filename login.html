@@ -44,7 +44,39 @@
           'Content-Type': 'application/json',
         }
       }).then((response) => {
+        if(response.data.status) {
+          const data = response.data.data;
+          setCookie('openid', data.openid, 60*60*24*30);
+          save_user_info(data);
+        }
+      })
+        .catch((error) => {
 
+        });
+    }
+
+    var save_user_info = (data) => {
+      const { openid = '', nickname = '', unionid = '', headimgurl = '', sex = '', province = '', city = '', country = '' } = data;
+      axios({
+        method: 'post',
+        url: 'http://absh5.pernod-ricard-china.com/mobile/member/memberSave',
+        params: {
+          openid,
+          nickname,
+          unionid,
+          headimgurl,
+          sex,
+          province,
+          city,
+          country
+        },
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }).then((response) => {
+        if(response.data.status == 200) {
+          window.location.replace('index.html');
+        }
       })
         .catch((error) => {
 
