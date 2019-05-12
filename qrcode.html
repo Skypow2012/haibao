@@ -2,211 +2,237 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>绝对鲜造专属风味瓶</title>
-    <link rel="stylesheet" href="./css/animate.css">
-    <script>
-        ! function (designWidth) {
-            if (/Android(?:\s+|\/)(\d+\.\d+)?/.test(navigator.userAgent)) {
-                var version = parseFloat(RegExp.$1);
-                if (version > 2.3) {
-                    var phoneScale = parseInt(window.screen.width) / designWidth;
-                    document.write('<meta name="viewport" content="width=' + designWidth + ',minimum-scale=' +
-                        phoneScale + ',maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi">');
-                } else {
-                    document.write('<meta name="viewport" content="width=' + designWidth +
-                        ',target-densitydpi=device-dpi">');
-                }
-            } else {
-                document.write('<meta name="viewport" content="width=' + designWidth +
-                    ',user-scalable=no,target-densitydpi=device-dpi,minimal-ui,viewport-fit=cover">');
-            }
-        }(750);
-        (function (designWidth, maxWidth) {
-            var doc = document,
-                win = window,
-                docEl = doc.documentElement,
-                remStyle = document.createElement("style"),
-                tid;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>绝对鲜造专属风味瓶</title>
+  <link rel="stylesheet" href="./css/animate.css">
+  <script>
+    ! function (designWidth) {
+      if (/Android(?:\s+|\/)(\d+\.\d+)?/.test(navigator.userAgent)) {
+        var version = parseFloat(RegExp.$1);
+        if (version > 2.3) {
+          var phoneScale = parseInt(window.screen.width) / designWidth;
+          document.write('<meta name="viewport" content="width=' + designWidth + ',minimum-scale=' +
+            phoneScale + ',maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi">');
+        } else {
+          document.write('<meta name="viewport" content="width=' + designWidth +
+            ',target-densitydpi=device-dpi">');
+        }
+      } else {
+        document.write('<meta name="viewport" content="width=' + designWidth +
+          ',user-scalable=no,target-densitydpi=device-dpi,minimal-ui,viewport-fit=cover">');
+      }
+    }(750);
+    (function (designWidth, maxWidth) {
+      var doc = document,
+        win = window,
+        docEl = doc.documentElement,
+        remStyle = document.createElement("style"),
+        tid;
 
-            function refreshRem() {
-                var width = docEl.getBoundingClientRect().width;
-                maxWidth = maxWidth || 540;
-                width > maxWidth && (width = maxWidth);
-                var rem = width * 100 / designWidth;
-                remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
-            }
-            if (docEl.firstElementChild) {
-                docEl.firstElementChild.appendChild(remStyle);
-            } else {
-                var wrap = doc.createElement("div");
-                wrap.appendChild(remStyle);
-                doc.write(wrap.innerHTML);
-                wrap = null;
-            }
-            //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
-            refreshRem();
-            win.addEventListener("resize", function () {
-                clearTimeout(tid); //防止执行两次
-                tid = setTimeout(refreshRem, 300);
-            }, false);
+      function refreshRem() {
+        var width = docEl.getBoundingClientRect().width;
+        maxWidth = maxWidth || 540;
+        width > maxWidth && (width = maxWidth);
+        var rem = width * 100 / designWidth;
+        remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+      }
+      if (docEl.firstElementChild) {
+        docEl.firstElementChild.appendChild(remStyle);
+      } else {
+        var wrap = doc.createElement("div");
+        wrap.appendChild(remStyle);
+        doc.write(wrap.innerHTML);
+        wrap = null;
+      }
+      //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+      refreshRem();
+      win.addEventListener("resize", function () {
+        clearTimeout(tid); //防止执行两次
+        tid = setTimeout(refreshRem, 300);
+      }, false);
 
-            win.addEventListener("pageshow", function (e) {
-                if (e.persisted) { // 浏览器后退的时候重新计算
-                    clearTimeout(tid);
-                    tid = setTimeout(refreshRem, 300);
-                }
-            }, false);
-            if (doc.readyState === "complete") {
-                doc.body.style.fontSize = "16px";
-            } else {
-                doc.addEventListener("DOMContentLoaded", function (e) {
-                    doc.body.style.fontSize = "16px";
-                }, false);
-            }
-        })(750, 750);
-    </script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box
+      win.addEventListener("pageshow", function (e) {
+        if (e.persisted) { // 浏览器后退的时候重新计算
+          clearTimeout(tid);
+          tid = setTimeout(refreshRem, 300);
         }
+      }, false);
+      if (doc.readyState === "complete") {
+        doc.body.style.fontSize = "16px";
+      } else {
+        doc.addEventListener("DOMContentLoaded", function (e) {
+          doc.body.style.fontSize = "16px";
+        }, false);
+      }
+    })(750, 750);
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
 
-        @font-face {
-            font-family: 'GB';
-            src: url('./font/china/FZLTZCHJW.TTF')
-        }
+    @font-face {
+      font-family: 'GB';
+      src: url('./font/china/FZLTZCHJW.TTF')
+    }
 
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            background: #e42eff;
-            position: relative;
-            font-family: 'GB';
-        }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #e42eff;
+      position: relative;
+      font-family: 'GB';
+    }
 
-        body {
-            display: none;
-            background: url('./img/bg-5.png') center -50px no-repeat;
-            background-size: 100% auto;
-            position: relative;
-            text-align: center
-        }
+    body {
+      display: none;
+      background: url('./img/bg-5.png') center -50px no-repeat;
+      background-size: 100% auto;
+      position: relative;
+      text-align: center
+    }
 
-        .box {
-            width: 4.3rem;
-            height: 4.3rem;
-            background: #271dfc;
-            margin:3.5rem auto 0
-        }
-        .ab{
-            width: 100%;
-            height: 100%;
-            padding: 8px;
-        }
-        .border {
-            width: 100%;
-            height: 100%;
-            background: url('./img/textab.png') no-repeat;
-            background-size: 100% 99%;
-            padding: .3rem;
-        }
+    .box {
+      width: 4.3rem;
+      height: 4.3rem;
+      background: #271dfc;
+      margin: 3.5rem auto 0
+    }
 
-        .code {
-            width: 100%;
-            height: 100%;
-            background: #fff;
-        }
+    .ab {
+      width: 100%;
+      height: 100%;
+      padding: 8px;
+    }
 
-        .text {
-            text-align: center;
-            letter-spacing: 1px
-        }
+    .border {
+      width: 100%;
+      height: 100%;
+      background: url('./img/textab.png') no-repeat;
+      background-size: 100% 99%;
+      padding: .3rem;
+    }
 
-        .msg {
-            border-bottom: 32px solid #271dfc;
-            color: #fff;
-            font-size: .4rem;
-            font-weight: bold;
-            padding: 0 10px;
-            ;
-            font-family: 'GB'
-        }
+    .code {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+    }
 
-        .info {
-            position: relative;
-            bottom: -28px;
-            letter-spacing: 2px;
-        }
+    .text {
+      text-align: center;
+      letter-spacing: 1px
+    }
 
-        .pad {
-            margin-top: 2rem
-        }
-        .code img{
-            width: 100%;
-            margin-top: -2px;
-            margin-left: -5px;
-        }
-        .hidden {
-            display: none
-        }
-    </style>
+    .msg {
+      border-bottom: 32px solid #271dfc;
+      color: #fff;
+      font-size: .4rem;
+      font-weight: bold;
+      padding: 0 10px;
+      ;
+      font-family: 'GB'
+    }
+
+    .info {
+      position: relative;
+      bottom: -28px;
+      letter-spacing: 2px;
+    }
+
+    .pad {
+      margin-top: 2rem
+    }
+
+    .code img {
+      width: 100%;
+      margin-top: -2px;
+      margin-left: -5px;
+    }
+
+    .hidden {
+      display: none
+    }
+
+    @media screen and (min-device-width: 750px) {
+      body {
+        background: url('./img/pad/qrcode.png') center center no-repeat;
+        background-size: 100% 100%;
+      }
+
+      .pad {
+        margin-top: 2.5rem
+      }
+
+      #qrcode-text-pad {
+        display: none;
+        width: 100vw;
+        position: relative;
+        left: -3vw;
+        top: 5vw;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="box">
-        <div class="ab">
-            <div class="border">
-                <div class="code">
-                    <img src="./img/bk.png" alt="">
-                </div>
-            </div>
+  <div class="box">
+    <div class="ab">
+      <div class="border">
+        <div class="code">
+          <img src="./img/bk.png" alt="">
         </div>
+      </div>
     </div>
-    <div class="text">
-        <img src="./img/longtouch.png" alt="">
-    </div>
-    <script src="./js/jq.min.js"></script>
-    <script>
-        $(document).on('touchmove', function(event) {
-          event.preventDefault();
-        });
-        var imgName = sessionStorage.getItem("name");
-        window.onload = function () {
-            $('.code img').attr('src', 'img/code/mobile/'+imgName+'.jpeg');
-            $('body').show()
-            var ua = window.navigator.userAgent.toLowerCase();
-            isTablet = /(?:iPad|PlayBook|pad)/.test(ua);
-            if (isTablet) {
-                $('.box').addClass('pad')
-            };
-            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
-                $('.info').text('长按识别图中小程序码准备付款')
-            } else {
-                $('.info').text('微信扫描二维码准备付款')
-            }
-        }
-    </script>
-    <script>
-        var _jcq = _jcq || [];
-        _jcq.enableHeatmap = true;
-        _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
-        _jcq.push(['_pageview']);
+  </div>
+  <div class="text">
+    <img src="./img/longtouch.png" alt="" id="qrcode-text">
+    <img src="./img/pad/qrcode_text.png" alt="" id="qrcode-text-pad">
+  </div>
+  <script src="./js/jq.min.js"></script>
+  <script>
+    $(document).on('touchmove', function (event) {
+      event.preventDefault();
+    });
+    var imgName = sessionStorage.getItem("name");
+    window.onload = function () {
+      $('.code img').attr('src', 'img/code/mobile/' + imgName + '.jpeg');
+      $('body').show()
+      var ua = window.navigator.userAgent.toLowerCase();
+      isTablet = /(?:iPad|PlayBook|pad)/.test(ua);
+      if (isTablet) {
+        $('.box').addClass('pad');
+        document.getElementById('qrcode-text-pad').style.display = 'block';
+        document.getElementById('qrcode-text').style.display = 'none';
+        $('.code img').attr('src', 'img/code/pad/' + imgName + '.jpeg');
+      };
+      if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+        $('.info').text('长按识别图中小程序码准备付款')
+      } else {
+        $('.info').text('微信扫描二维码准备付款')
+      }
+    }
+    
+    var _jcq = _jcq || [];
+    _jcq.enableHeatmap = true;
+    _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
+    _jcq.push(['_pageview']);
 
-        (function() {
-        var jc = document.createElement('script'); jc.async = true;
-        jc.src = '//' + 'cdn.jice.io/js/jice.min.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(jc, s);
-        })();
-    </script>
+    (function () {
+      var jc = document.createElement('script'); jc.async = true;
+      jc.src = '//' + 'cdn.jice.io/js/jice.min.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jc, s);
+    })();
+  </script>
 </body>
 
 </html>

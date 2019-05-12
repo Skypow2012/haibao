@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
+  <title>登录</title>
+  <script src="./js/axios.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <div id="login">
+    <div id="warning">登录中...</div>
+  </div>
+  <script>
+    function getUrlParam(name) {
+      //构造一个含有目标参数的正则表达式对象  
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+      //匹配目标参数  
+      var r = window.location.search.substr(1).match(reg);
+      //返回参数值  
+      if (r != null) {
+        return decodeURI(r[2]);
+      }
+      return null;
+    }
+
+    function setCookie(c_name, value, expiredays) {
+      var exdate = new Date();
+      exdate.setDate(exdate.getDate() + expiredays);
+      document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString());
+    }
+
+    function devide_cookie() {
+      axios({
+        method: 'post',
+        url: 'http://scrm-web.pernod-ricard-china.com/api/v2/oauthuser',
+        params: {
+          code: getUrlParam("code"),
+          appid: 'wx34198b7d0eee17e9',
+        },
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }).then((response) => {
+
+      })
+        .catch((error) => {
+
+        });
+    }
+    window.addEventListener('load', devide_cookie(), false);
+  </script>
+  <script>
+    //根据页面分辨率动态调整font-size
+    ! function (win, lib) {
+      var timer,
+        doc = win.document,
+        docElem = doc.documentElement,
+
+        vpMeta = doc.querySelector('meta[name="viewport"]'),
+        flexMeta = doc.querySelector('meta[name="flexible"]'),
+
+        dpr = 0,
+        scale = 0,
+
+        flexible = lib.flexible || (lib.flexible = {});
+
+      // 设置了 viewport meta
+      if (vpMeta) {
+
+        console.warn("将根据已有的meta标签来设置缩放比例");
+        var initial = vpMeta.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
+
+        if (initial) {
+          scale = parseFloat(initial[1]); // 已设置的 initialScale
+          dpr = parseInt(1 / scale); // 设备像素比 devicePixelRatio
+        }
+
+      }
+      // 设置了 flexible Meta
+      else if (flexMeta) {
+        var flexMetaContent = flexMeta.getAttribute("content");
+        if (flexMetaContent) {
+
+          var initial = flexMetaContent.match(/initial\-dpr=([\d\.]+)/),
+            maximum = flexMetaContent.match(/maximum\-dpr=([\d\.]+)/);
+
+          if (initial) {
+            dpr = parseFloat(initial[1]);
+            scale = parseFloat((1 / dpr).toFixed(2));
+          }
+
+          if (maximum) {
+            dpr = parseFloat(maximum[1]);
+            scale = parseFloat((1 / dpr).toFixed(2));
+          }
+        }
+      }
+
+      docElem.setAttribute("data-dpr", dpr);
+
+      function setFontSize() {
+        var winWidth = docElem.getBoundingClientRect().width;
+
+        if (winWidth / dpr > 540) {
+          (winWidth = 540 * dpr);
+        }
+
+        // 根节点 fontSize 根据宽度决定
+        var baseSize = winWidth / 10;
+
+        docElem.style.fontSize = baseSize + "px";
+        flexible.rem = win.rem = baseSize;
+      }
+
+      // 调整窗口时重置
+      win.addEventListener("resize", function () {
+        clearTimeout(timer);
+        timer = setTimeout(setFontSize, 300);
+      }, false);
+
+
+      // orientationchange 时也需要重算下吧
+      win.addEventListener("orientationchange", function () {
+        clearTimeout(timer);
+        timer = setTimeout(setFontSize, 300);
+      }, false);
+
+
+      // pageshow
+      // keyword: 倒退 缓存相关
+      win.addEventListener("pageshow", function (e) {
+        if (e.persisted) {
+          clearTimeout(timer);
+          timer = setTimeout(setFontSize, 300);
+        }
+      }, false);
+
+      // 设置基准字体
+      if ("complete" === doc.readyState) {
+        doc.body.style.fontSize = 12 * dpr + "px";
+      } else {
+        doc.addEventListener("DOMContentLoaded", function () {
+          doc.body.style.fontSize = 12 * dpr + "px";
+        }, false);
+      }
+
+      setFontSize();
+
+      flexible.dpr = win.dpr = dpr;
+
+      flexible.refreshRem = setFontSize;
+
+      flexible.rem2px = function (d) {
+        var c = parseFloat(d) * this.rem;
+        if ("string" == typeof d && d.match(/rem$/)) {
+          c += "px";
+        }
+        return c;
+      };
+
+      flexible.px2rem = function (d) {
+        var c = parseFloat(d) / this.rem;
+
+        if ("string" == typeof d && d.match(/px$/)) {
+          c += "rem";
+        }
+        return c;
+      }
+    }(window, window.lib || (window.lib = {}));
+  </script>
+</body>
+
+</html>

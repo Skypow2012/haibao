@@ -99,7 +99,7 @@
 
     body {
       display: none;
-      background: url('./img/bg-4.png') center top no-repeat;
+      background: url('./img/bg-4.png') center -50px no-repeat;
       background-size: 100% auto;
       position: relative;
       text-align: center
@@ -151,21 +151,68 @@
       margin-top: 0;
       margin-bottom: -.5rem;
     }
+
+    @media only screen and (min-device-width : 375px) and (max-device-width : 412px) {
+      .
+      /*flex {
+                bottom: -1.5rem;
+            }*/
+    }
+
+    @media only screen and (min-device-width : 412px) and (max-device-width : 768px) {
+      .
+      /*ip8 {
+                bottom: 1rem;
+            }*/
+    }
+
     @media only screen and (min-device-width : 375px) and (min-device-height : 800px) {
       .img {
-          width: 4.1rem;
-          margin-top: -1rem;
+        width: 4.1rem;
+        margin-top: -1rem;
       }
     }
-    @media screen and (min-width: 750px) {
+
+    @media screen and (min-device-width: 750px) {
+      body {
+        display: none;
+        background: url('./img/pad/confirm.png') center center no-repeat;
+        background-size: 100% 100%;
+        text-align: center
+      }
+
+      .price {
+        width: 2.3rem;
+        height: .36rem;
+        background: #271cfc;
+        margin: 0 auto 0;
+        position: relative;
+        left: 6vw;
+      }
+
+      .scale {
+        transform: scale(.80);
+        margin-top: 0;
+        margin-bottom: -.5rem;
+      }
+
+      .btns {
+        width: 100vw;
+        margin: .2rem auto 0;
+      }
+
+      .btns img {
+        width: 40vw;
+      }
+
       .back {
         position: absolute;
-        left: 4%;
+        left: 8vw;
       }
 
       .next {
         position: absolute;
-        right: 4%;
+        right: 8vw;
       }
     }
   </style>
@@ -187,38 +234,37 @@
     </div>
     <script src="./js/jq.min.js"></script>
     <script>
-        $(document).on('touchmove', function(event) {
-          event.preventDefault();
-        });
-        window.onload=function () {
-            $('body').show()
-            var ua = navigator.userAgent,
-                isTablet = /(?:iPad|PlayBook|pad)/i.test(ua);
-            if (isTablet) {
-                // $('.box').addClass('pad-trans')
-                $('.img').addClass('scale')
-            };
-            $('.back').click(function () {
-                window.location.replace('make.html');
-             })
-            $('.next').click(function () {
-                window.location.replace('qrcode.html');
-             })
-            
-        }
-    </script>
-    <script>
-        var _jcq = _jcq || [];
-        _jcq.enableHeatmap = true;
-        _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
-        _jcq.push(['_pageview']);
+      $(document).on('touchmove', function (event) {
+        event.preventDefault();
+      });
+      window.onload = function () {
+        $('body').show()
+        var ua = navigator.userAgent,
+          isTablet = /(?:iPad|PlayBook|pad)/i.test(ua);
+        if (isTablet) {
+          // $('.box').addClass('pad-trans')
+          $('.img').addClass('scale')
+        };
+        $('.back').click(function () {
+          window.location.replace('make.html');
+        })
+        $('.next').click(function () {
+          window.location.replace('qrcode.html');
+        })
 
-        (function() {
+      }
+      
+      var _jcq = _jcq || [];
+      _jcq.enableHeatmap = true;
+      _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
+      _jcq.push(['_pageview']);
+
+      (function () {
         var jc = document.createElement('script'); jc.async = true;
         jc.src = '//' + 'cdn.jice.io/js/jice.min.js';
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(jc, s);
-        })();
+      })();
     </script>
 </body>
 

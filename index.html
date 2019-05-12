@@ -2,712 +2,764 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>绝对鲜造专属风味瓶</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-    <script>
-        var deviceWidth = parseInt(window.screen.width); //获取当前设备的屏幕宽度
-        var deviceScale = deviceWidth / 750; //得到当前设备屏幕与750之间的比例，之后我们就可以将网页宽度固定为750px
-        var ua = navigator.userAgent;
-        //获取当前设备类型（安卓或苹果）
-        if (/Android (\d+\.\d+)/.test(ua)) {
-            var version = parseFloat(RegExp.$1);
-            if (version > 2.3) {
-                document.write('<meta name="viewport" content="width=750,initial-scale=' + deviceScale +
-                    ', minimum-scale = ' + deviceScale + ', maximum-scale = ' + deviceScale +
-                    ', target-densitydpi=device-dpi">');
-            } else {
-                document.write(
-                    '<meta name="viewport" content="width=750,initial-scale=0.75,maximum-scale=0.75,minimum-scale=0.75,target-densitydpi=device-dpi" />'
-                );
-            }
-            localStorage.appType = 0;
-        } else {
-            localStorage.appType = 1;
-            document.write('<meta name="viewport" content="width=750,initial-scale=' + deviceScale +
-                ', minimum-scale = ' +
-                deviceScale + ', maximum-scale = ' + deviceScale + '">');
-        }
-        (function (designWidth, maxWidth) {
-            var doc = document,
-                win = window,
-                docEl = doc.documentElement,
-                remStyle = document.createElement("style"),
-                tid;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>绝对鲜造专属风味瓶</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+  <script>
+    var deviceWidth = parseInt(window.screen.width); //获取当前设备的屏幕宽度
+    var deviceScale = deviceWidth / 750; //得到当前设备屏幕与750之间的比例，之后我们就可以将网页宽度固定为750px
+    var ua = navigator.userAgent;
+    //获取当前设备类型（安卓或苹果）
+    if (/Android (\d+\.\d+)/.test(ua)) {
+      var version = parseFloat(RegExp.$1);
+      if (version > 2.3) {
+        document.write('<meta name="viewport" content="width=750,initial-scale=' + deviceScale +
+          ', minimum-scale = ' + deviceScale + ', maximum-scale = ' + deviceScale +
+          ', target-densitydpi=device-dpi">');
+      } else {
+        document.write(
+          '<meta name="viewport" content="width=750,initial-scale=0.75,maximum-scale=0.75,minimum-scale=0.75,target-densitydpi=device-dpi" />'
+        );
+      }
+      localStorage.appType = 0;
+    } else {
+      localStorage.appType = 1;
+      document.write('<meta name="viewport" content="width=750,initial-scale=' + deviceScale +
+        ', minimum-scale = ' +
+        deviceScale + ', maximum-scale = ' + deviceScale + '">');
+    }
+    (function (designWidth, maxWidth) {
+      var doc = document,
+        win = window,
+        docEl = doc.documentElement,
+        remStyle = document.createElement("style"),
+        tid;
 
-            function refreshRem() {
-                var width = docEl.getBoundingClientRect().width;
-                maxWidth = maxWidth || 540;
-                width > maxWidth && (width = maxWidth);
-                var rem = width * 100 / designWidth;
-                remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
-            }
-            if (docEl.firstElementChild) {
-                docEl.firstElementChild.appendChild(remStyle);
-            } else {
-                var wrap = doc.createElement("div");
-                wrap.appendChild(remStyle);
-                doc.write(wrap.innerHTML);
-                wrap = null;
-            }
-            //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
-            refreshRem();
-            win.addEventListener("resize", function () {
-                clearTimeout(tid); //防止执行两次
-                tid = setTimeout(refreshRem, 300);
-            }, false);
+      function refreshRem() {
+        var width = docEl.getBoundingClientRect().width;
+        maxWidth = maxWidth || 540;
+        width > maxWidth && (width = maxWidth);
+        var rem = width * 100 / designWidth;
+        remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+      }
+      if (docEl.firstElementChild) {
+        docEl.firstElementChild.appendChild(remStyle);
+      } else {
+        var wrap = doc.createElement("div");
+        wrap.appendChild(remStyle);
+        doc.write(wrap.innerHTML);
+        wrap = null;
+      }
+      //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+      refreshRem();
+      win.addEventListener("resize", function () {
+        clearTimeout(tid); //防止执行两次
+        tid = setTimeout(refreshRem, 300);
+      }, false);
 
-            win.addEventListener("pageshow", function (e) {
-                if (e.persisted) { // 浏览器后退的时候重新计算
-                    clearTimeout(tid);
-                    tid = setTimeout(refreshRem, 300);
-                }
-            }, false);
-            if (doc.readyState === "complete") {
-                doc.body.style.fontSize = "16px";
-            } else {
-                doc.addEventListener("DOMContentLoaded", function (e) {
-                    doc.body.style.fontSize = "16px";
-                }, false);
-            }
-        })(750, 750);
-    </script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box
+      win.addEventListener("pageshow", function (e) {
+        if (e.persisted) { // 浏览器后退的时候重新计算
+          clearTimeout(tid);
+          tid = setTimeout(refreshRem, 300);
         }
+      }, false);
+      if (doc.readyState === "complete") {
+        doc.body.style.fontSize = "16px";
+      } else {
+        doc.addEventListener("DOMContentLoaded", function (e) {
+          doc.body.style.fontSize = "16px";
+        }, false);
+      }
+    })(750, 750);
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
 
-        @font-face {
-            font-family: 'eng';
-            src: url('./font/english/Absolut-Medium.ttf'),
-                url('./font/english/Absolut-Medium.eot'),
-                url('./font/english/Absolut-Medium.woff'),
-                url('./font/english/Absolut-Regular.svg');
-        }
+    @font-face {
+      font-family: 'eng';
+      src: url('./font/english/Absolut-Medium.ttf'),
+        url('./font/english/Absolut-Medium.eot'),
+        url('./font/english/Absolut-Medium.woff'),
+        url('./font/english/Absolut-Regular.svg');
+    }
 
-        @font-face {
-            font-family: 'chi';
-            src: url('./font/china/FZLTZCHJW.TTF'),
-                url('./font/china/SourceHanSansCN-Normal.otf')
-        }
-        @font-face{
-            font-family: 'Blod';
-            src: url('./font/china/SourceHanSansCN-Bold.otf')
-        }
-        @font-face {
-            font-family: 'Medium';
-            src: url('./font/china/SourceHanSansCN-Medium.otf')
-        }
+    @font-face {
+      font-family: 'chi';
+      src: url('./font/china/FZLTZCHJW.TTF'),
+        url('./font/china/SourceHanSansCN-Normal.otf')
+    }
 
-        @font-face {
-            font-family: 'Regular';
-            src: url('./font/china/SourceHanSansCN-Regular.otf')
-        }
+    @font-face {
+      font-family: 'Blod';
+      src: url('./font/china/SourceHanSansCN-Bold.otf')
+    }
 
-        div,
-        span,
-        p {
-            font-family: 'eng'
-        }
+    @font-face {
+      font-family: 'Medium';
+      src: url('./font/china/SourceHanSansCN-Medium.otf')
+    }
 
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            background: #001223;
-            position: relative;
-        }
+    @font-face {
+      font-family: 'Regular';
+      src: url('./font/china/SourceHanSansCN-Regular.otf')
+    }
 
-        body {
-            display: none;
-        }
+    div,
+    span,
+    p {
+      font-family: 'eng'
+    }
 
-        .bg {
-            width: 235vw;
-            height: 235vw;
-            background: url('./img/bg-1-1.jpg') no-repeat center;
-            background-size: contain;
-            position: relative;
-            top: -40vw;
-            left: -69vw;
-            -webkit-perspective: 1000;
-            -webkit-backface-visibility: hidden;
-            perspective: 1000;
-            backface-visibility: hidden;
-            -ms-transform: rotate(360deg);
-            transform: rotate(360deg);
-            -webkit-transform: rotate(360deg);
-            -webkit-animation: rotation 15s linear infinite;
-            animation: rotation 15s linear infinite;
-            -moz-animation: rotation 15s linear infinite;
-        }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #001223;
+      position: relative;
+    }
 
-        @-webkit-keyframes rotation {
-            from {
-                -webkit-transform: rotate(0deg);
-            }
+    body {
+      display: none;
+    }
 
-            to {
-                -webkit-transform: rotate(360deg);
-            }
-        }
+    .bg {
+      width: 235vw;
+      height: 235vw;
+      background: url('./img/bg-1-1.jpg') no-repeat center;
+      background-size: contain;
+      position: relative;
+      top: -40vw;
+      left: -69vw;
+      -webkit-perspective: 1000;
+      -webkit-backface-visibility: hidden;
+      perspective: 1000;
+      backface-visibility: hidden;
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -webkit-animation: rotation 15s linear infinite;
+      animation: rotation 15s linear infinite;
+      -moz-animation: rotation 15s linear infinite;
+    }
 
-        @keyframes rotation {
-            from {
-                -webkit-transform: rotate(0deg);
-            }
+    @-webkit-keyframes rotation {
+      from {
+        -webkit-transform: rotate(0deg);
+      }
 
-            to {
-                -webkit-transform: rotate(360deg);
-            }
-        }
+      to {
+        -webkit-transform: rotate(360deg);
+      }
+    }
 
-        .box {
-            width: 100%;
-            position: absolute;
-            top: 30%;
-            text-align: center;
-        }
+    @keyframes rotation {
+      from {
+        -webkit-transform: rotate(0deg);
+      }
 
-        .logo {
-            position: relative;
-            top: -2.7rem;
-        }
+      to {
+        -webkit-transform: rotate(360deg);
+      }
+    }
 
-        .text {
-            width: 100%;
-            position: absolute;
-            top: 260px;
-        }
+    .box {
+      width: 100%;
+      position: absolute;
+      top: 30%;
+      text-align: center;
+    }
 
-        .abso {
-            margin: .1rem 0
-        }
+    .logo {
+      position: relative;
+      top: -2.7rem;
+    }
 
-        .section {
-            margin: auto;
-            color: #fff;
-            font-size: .3rem;
-            font-size: 30px;
-            font-family: "Medium";
-            color: rgb(254, 254, 254);
-            text-transform: uppercase;
-            line-height: 1.333;
-        }
-        .section > img {
-            display: block;
-            width: 100%;
-            margin: 6px 0;
-        }
+    .text {
+      width: 100%;
+      position: absolute;
+      top: 260px;
+    }
 
-        .section span {
-            display: inline-block;
-            margin-top: 20px;
-            border-bottom: 24px solid #e42eff;
-            line-height: 0px;
-            padding: 0 10px;
-        }
+    .abso {
+      margin: .1rem 0
+    }
 
-        .start,
-        .cancel {
-            margin-top: .2rem;
-            width: 112%;
-        }
+    .section {
+      margin: auto;
+      color: #fff;
+      font-size: .3rem;
+      font-size: 30px;
+      font-family: "Medium";
+      color: rgb(254, 254, 254);
+      text-transform: uppercase;
+      line-height: 1.333;
+    }
 
-        .footImg {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1;
-        }
+    .section>img {
+      display: block;
+      width: 100%;
+      margin: 6px 0;
+    }
 
-        .pad-top {
-            top: -44vw !important;
-        }
+    .section span {
+      display: inline-block;
+      margin-top: 20px;
+      border-bottom: 24px solid #e42eff;
+      line-height: 0px;
+      padding: 0 10px;
+    }
 
-        .flex {
-            width: 80%;
-            margin: auto;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-pack: distribute;
-            justify-content: space-around;
-        }
+    .start,
+    .cancel {
+      margin-top: .2rem;
+      width: 112%;
+    }
 
-        .flex .desc {
-            padding-left: 0.4rem;
-            color: #fff;
-            font-size: .22rem;
-        }
+    .footImg {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 1;
+    }
 
-        .input-box {
-            display: inline-block;
-            width: .24rem;
-            height: .24rem;
-            background: #e42eff;
-            border: 2px solid #07f828;
-            vertical-align: sub;
+    .pad-top {
+      top: -44vw !important;
+    }
 
-        }
+    .flex {
+      width: 80%;
+      margin: auto;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: distribute;
+      justify-content: space-around;
+    }
 
-        .rule {
-            font-size: .22rem;
-            color: #07f828;
-            margin-top: .2rem;
-            font-family: 'Regular'
-        }
+    .flex .desc {
+      padding-left: 0.4rem;
+      color: #fff;
+      font-size: .22rem;
+    }
 
-        .underline {
-            border-bottom: 2px solid #07f828;
-        }
+    .input-box {
+      display: inline-block;
+      width: .24rem;
+      height: .24rem;
+      background: #e42eff;
+      border: 2px solid #07f828;
+      vertical-align: sub;
 
-        .check {
-            display: inline-block;
-            width: 100%;
-            height: 116%;
-        }
+    }
 
-        .nike {
-            background: url('./img/nike.png') no-repeat
-        }
+    .rule {
+      font-size: .22rem;
+      color: #07f828;
+      margin-top: .2rem;
+      font-family: 'Regular'
+    }
 
-        .dialog {
-            display: none;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, .8);
-            z-index: 2
-        }
+    .underline {
+      border-bottom: 2px solid #07f828;
+    }
 
-        .ruleList, .secreatList {
-            padding: .5rem;
-            color: #fff;
-            text-align: justify;
-            font-size: .22rem;
-            line-height: 38px;
-            overflow-y: scroll;
-            -webkit-overflow-scrolling : touch;
-        }
-        .ruleList .blod, .secreatList .blod {
-            font-weight: bold;
-            text-indent: 0;
-            font-size: .28rem;
-        }
-        .ruleList .blod.n, .secreatList .blod.n {
-            font-size: inherit;
-        }
-        .rule-box{
-            position: relative;
-        }
+    .check {
+      display: inline-block;
+      width: 100%;
+      height: 116%;
+    }
 
-        .closeBtn {
-            width: 40px;
-            height: 40px;
-            background: none;
-            border: 2px solid #fff;
-            border-radius: 50%;
-            color: #fff;
-            position: absolute;
-            right: .2rem;
-            top: .2rem;
-        }
-        .con{
-            padding-top: 80px;
-            font-size: 30px;
-            margin-bottom: 20px;
-        }
+    .nike {
+      background: url('./img/nike.png') no-repeat
+    }
 
-        .closeBtn .close {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            top: 6px;
-            right: -2px;
-        }
+    .dialog {
+      display: none;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, .8);
+      z-index: 2
+    }
 
-        .close:before,
-        .close:after {
-            position: absolute;
-            left: 19px;
-            content: ' ';
-            height: 24px;
-            width: 3px;
-            background-color: #fff;
-        }
+    .ruleList,
+    .secreatList {
+      padding: .5rem;
+      color: #fff;
+      text-align: justify;
+      font-size: .22rem;
+      line-height: 38px;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
 
-        .close:before {
-            transform: rotate(45deg);
-        }
+    .ruleList .blod,
+    .secreatList .blod {
+      font-weight: bold;
+      text-indent: 0;
+      font-size: .28rem;
+    }
 
-        .close:after {
-            transform: rotate(-45deg);
-        }
+    .ruleList .blod.n,
+    .secreatList .blod.n {
+      font-size: inherit;
+    }
 
-        .flex {
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            height: inherit;
-            text-align: center
-        }
-        .clock {
-            width: 5rem;
-            height: 5rem;
-            margin: auto;
-            /* border: 4px solid #e847ff; */
-            background: url(./img/alert.png) center no-repeat;
-            background-size: contain;
-            color: #e847ff;
-            font-size: .36rem;
-            font-weight: bold;
-            padding-top: 1rem;
-            position: relative;
-            text-transform: uppercase;
-            line-height: 1.25;
-            font-family: 'chi';
-        }
-        .clock .closeImg{
-            position: absolute;
-            right: 30px;
-            top: 30px;
-            width: 50px;
-        }
-        .clock .under {
-            border-bottom: 4px solid #e847ff;
-            color: #e847ff;
-            font-size: .36rem;
-            font-family: 'Blod';
-        }
-        .clock > p{
-            padding-left: 0.3rem;
-            font-family: 'Blod';
-        }
-        .clock .fa {
-            position: absolute;
-            top: .1rem;
-            right: .1rem
-        }
+    .rule-box {
+      position: relative;
+    }
 
-        @media (min-width: 1024px) {
-            html,
-            body {
-                width: 1024px;
-                margin: 0 auto;
-                font-size: 70px
-            }
-        }
+    .closeBtn {
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      color: #fff;
+      position: absolute;
+      right: .2rem;
+      top: .2rem;
+    }
 
-        @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-            html {
-                font-size: 80px;
-            }
-            .box {
-                top: 20%
-            }
-        }
-        .displayNone{
-            display: none;
-        }
+    .con {
+      padding-top: 80px;
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
 
-        @media only screen and (min-device-width : 375px) and (max-device-width : 412px) {
-            .bg {
-                top: -60vw;
-                left: -69vw;
-            }
-        }
-        @media only screen and (min-device-width : 412px) and (max-device-width : 768px) {
-            .text {
-                /*top: 460px;*/
-            }
-            .bg {
-                top: -50vw;
-                left: -69vw;
-            }
-        }
-        @media only screen and (min-device-width : 375px) and (min-device-height : 800px) {
-            .text {
-                /*top: 560px;*/
-            }
-            .bg {
-                top: -40vw;
-                left: -69vw;
-            }
-        }
-    </style>
+    .closeBtn .close {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      top: 6px;
+      right: -2px;
+    }
+
+    .close:before,
+    .close:after {
+      position: absolute;
+      left: 19px;
+      content: ' ';
+      height: 24px;
+      width: 3px;
+      background-color: #fff;
+    }
+
+    .close:before {
+      transform: rotate(45deg);
+    }
+
+    .close:after {
+      transform: rotate(-45deg);
+    }
+
+    .flex {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      height: inherit;
+      text-align: center
+    }
+
+    .clock {
+      width: 5rem;
+      height: 5rem;
+      margin: auto;
+      /* border: 4px solid #e847ff; */
+      background: url(./img/alert.png) center no-repeat;
+      background-size: contain;
+      color: #e847ff;
+      font-size: .36rem;
+      font-weight: bold;
+      padding-top: 1rem;
+      position: relative;
+      text-transform: uppercase;
+      line-height: 1.25;
+      font-family: 'chi';
+    }
+
+    .clock .closeImg {
+      position: absolute;
+      right: 30px;
+      top: 30px;
+      width: 50px;
+    }
+
+    .clock .under {
+      border-bottom: 4px solid #e847ff;
+      color: #e847ff;
+      font-size: .36rem;
+      font-family: 'Blod';
+    }
+
+    .clock>p {
+      padding-left: 0.3rem;
+      font-family: 'Blod';
+    }
+
+    .clock .fa {
+      position: absolute;
+      top: .1rem;
+      right: .1rem
+    }
+
+    @media (min-width: 1024px) {
+
+      html,
+      body {
+        width: 1024px;
+        margin: 0 auto;
+        font-size: 70px
+      }
+    }
+
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+      html {
+        font-size: 80px;
+      }
+
+      .box {
+        top: 20%
+      }
+    }
+
+    .displayNone {
+      display: none;
+    }
+
+    @media only screen and (min-device-width : 375px) and (max-device-width : 412px) {
+      .bg {
+        top: -60vw;
+        left: -69vw;
+      }
+    }
+
+    @media only screen and (min-device-width : 412px) and (max-device-width : 768px) {
+      .text {
+        /*top: 460px;*/
+      }
+
+      .bg {
+        top: -50vw;
+        left: -69vw;
+      }
+    }
+
+    @media only screen and (min-device-width : 375px) and (min-device-height : 800px) {
+      .text {
+        /*top: 560px;*/
+      }
+
+      .bg {
+        top: -40vw;
+        left: -69vw;
+      }
+    }
+
+    @media screen and (min-device-width: 750px) {
+      .input-box {
+        position: relative;
+      }
+
+      .check {
+        position: absolute;
+        left: -2px;
+        top: 0;
+        width: 110%;
+      }
+
+      .nike {
+        background: url('./img/nike.png') no-repeat;
+        background-size: cover;
+      }
+      .box {
+        top: 14%;
+      }
+      .text{
+        top: 32vh;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="bg"> </div>
-    <div class="box">
-        <img src="./img/greenBall.png" alt="" class="green">
-        <img src="./img/logo.png" alt="" class="logo">
-        <div class="text">
-            <img src="./img/absolut.png" alt="" class="abso">
-            <div class="section">
-                <img src='img/hometitle.png' />
-            </div>
-            <div class="flex">
-                <div class="left-btn">
-                    <img src="./img/start.png" alt="" class="start">
-                    <p class="desc">我已年满18岁</p>
-                </div>
-                <div class="right-btn">
-                    <a href="http://www.pernod-ricard-china.com/cn/ResponsibleDrinking.html#/Minors">
-                        <img src="./img/cancel.png" alt="" class="cancel">
-                        <p class="desc">未满18岁</p>
-                    </a>
-                </div>
-            </div>
-            <div class="rule">
-                <span class="input-box"> 
-                    <span class="check"></span> 
-                </span> 
-                <span>我已阅读同意<span class="underline ruleBtn">活动细则</span>和<span class="underline screat screatBtn">隐私条款</span></span>
-            </div>
+  <div class="bg"> </div>
+  <div class="box">
+    <img src="./img/greenBall.png" alt="" class="green">
+    <img src="./img/logo.png" alt="" class="logo">
+    <div class="text">
+      <img src="./img/absolut.png" alt="" class="abso">
+      <div class="section">
+        <img src='img/hometitle.png' />
+      </div>
+      <div class="flex">
+        <div class="left-btn">
+          <img src="./img/start.png" alt="" class="start">
+          <p class="desc">我已年满18岁</p>
         </div>
+        <div class="right-btn">
+          <a href="http://www.pernod-ricard-china.com/cn/ResponsibleDrinking.html#/Minors">
+            <img src="./img/cancel.png" alt="" class="cancel">
+            <p class="desc">未满18岁</p>
+          </a>
+        </div>
+      </div>
+      <div class="rule">
+        <span class="input-box">
+          <span class="check"></span>
+        </span>
+        <span>我已阅读同意<span class="underline ruleBtn">活动细则</span>和<span
+            class="underline screat screatBtn">隐私条款</span></span>
+      </div>
     </div>
-    <div class="dialog tip">
-        <div class="flex">
-            <div class="clock">
-                <img src="./img/close.png" class="closeImg" alt="">
-                <p style="margin-top: .8rem;">您还未勾选</p>
-                <p> 
-                    <span class=" under ruleBtn" style="color:#e847ff">活动细则</span>和<span class="secret under screatBtn">隐私条款</span>
-                </p>
-            </div>
-        </div>
+  </div>
+  <div class="dialog tip">
+    <div class="flex">
+      <div class="clock">
+        <img src="./img/close.png" class="closeImg" alt="">
+        <p style="margin-top: .8rem;">您还未勾选</p>
+        <p>
+          <span class=" under ruleBtn" style="color:#e847ff">活动细则</span>和<span
+            class="secret under screatBtn">隐私条款</span>
+        </p>
+      </div>
     </div>
-    <div class="dialog ruleList">
-        <div class="rule-box text-white">
-            <div class="closeBtn">
-                <span class="close"></span>
-            </div>
-            <div class="text-center con">活动细则</div>
-            <div class="">
-                <span class="blod">• 活动主题/ ACTIVITY THEME</span><br />
-                <span class="blod">•【绝对伏特加出界实验室】</span><br />
-                <span class="blod">• 参与方式/ WAYS OF PARTICIPATION</span>
-                <br>
-                即日起至2019年7月7日23:59，微信登陆绝对伏特加官方微信公众平台“绝对伏特加”（微信搜索AbsolutVodka_China），通过菜单栏进入【绝对伏特加出界实验室】H5，答题结束后根据结果页提示，进入保乐力加Drinks & Co.中即有机会获得奖品兑换券。
-                <br><br>
-                <span class="blod">• 奖品设置/ PRIZE SETTING </span>
-                <br>
-                在绝对伏特加出界实验室H5回答互动问题后，有机会获得以下奖品：<br>
-                -	【ABSOLUT出界勋章奖品兑换券】，凭此券可在ABSOLUT LAB兑换两个随机款式ABSOLUT出界徽章【该奖品H5发放总数量：7200对】；<br>
-                -	【ABSOLUT出界特调奖品兑换券】，凭此券可在ABSOLUT LAB现场免费兑换一杯出界特调【该奖品H5发放总数量：8800杯】；<br>
-                -	【ABSOLUT指定产品一件免费兑换券】，凭此券可在Drinks & Co.线上免费兑换ABSOLUT指定产品一件【该奖品H5发放总数量：800件】；<br>
-                <br>
-                <span class="blod">• 兑奖规则/ PRIZE CLAIM</span>
-                <br>
-                -	此兑奖活动仅限年龄满18周岁用户参与；<br>
-                -	所有奖品兑换券仅能通过H5线上互动答题获得，兑换时间仅限2019年5月16日至2019年7月12日（周一至周五11:00-20:00，周六、周日11:00-21:00）；<br>
-                -	奖品兑换券每日数量有限，先到先得，送完即止；<br>
-                -	每个用户每天可不限次数参与H5线上互动答题，每个手机号每日仅可在保乐力加Drinks & Co.中领取一张奖品兑换券；<br>
-                -	所有奖品兑换券均为非卖品，不可折现或转卖；<br>
-                -	凭保乐力加Drinks & Co.中卡券内的奖品兑换券，【ABSOLUT出界勋章奖品兑换券】及【ABSOLUT出界特调奖品兑换券】请前往ABSOLUT LAB（上海市巨鹿路758号3幢1层）进行奖品兑换，奖品兑换券兑奖时间仅限2019年5月16日至2019年7月12日（周一至周五11:00-20:00，周六、周日11:00-21:00），逾期作废；【ABSOLUT指定产品一件免费兑换券】，请在Drinks & Co.小程序中直接做兑换；<br>
-                -	奖品兑换券不可由他人代领；<br>
-                -	兑奖过程中严禁任何作弊行为，一旦发现作弊行为，则取消中奖资格且不予通知。<br>
-                
-                *本活动中“ABSOLUT LAB线下创意零售空间”的地址为：上海市巨鹿路758号3幢1层，其零售业务经营方为上海湾里书香图书有限公司。
-                
-        </div>
-        </div>
+  </div>
+  <div class="dialog ruleList">
+    <div class="rule-box text-white">
+      <div class="closeBtn">
+        <span class="close"></span>
+      </div>
+      <div class="text-center con">活动细则</div>
+      <div class="">
+        <span class="blod">• 活动主题/ ACTIVITY THEME</span><br />
+        【绝对伏特加出界实验室】<br /><br />
+        <span class="blod">• 参与方式/ WAYS OF PARTICIPATION</span>
+        <br>
+        即日起至2019年7月7日23:59，微信登陆绝对伏特加官方微信公众平台“绝对伏特加”（微信搜索AbsolutVodka_China），通过菜单栏进入【绝对伏特加出界实验室】H5，答题结束后根据结果页提示，进入保乐力加Drinks
+        & Co.中即有机会获得奖品兑换券。
+        <br><br>
+        <span class="blod">• 奖品设置/ PRIZE SETTING </span>
+        <br>
+        在绝对伏特加出界实验室H5回答互动问题后，有机会获得以下奖品：<br>
+        - 【ABSOLUT出界勋章奖品兑换券】，凭此券可在ABSOLUT LAB兑换两个随机款式ABSOLUT出界徽章【该奖品H5发放总数量：7200对】；<br>
+        - 【ABSOLUT出界特调奖品兑换券】，凭此券可在ABSOLUT LAB现场免费兑换一杯出界特调【该奖品H5发放总数量：8800杯】；<br>
+        - 【ABSOLUT指定产品一件免费兑换券】，凭此券可在Drinks & Co.线上免费兑换ABSOLUT指定产品一件【该奖品H5发放总数量：800件】；<br>
+        <br>
+        <span class="blod">• 兑奖规则/ PRIZE CLAIM</span>
+        <br>
+        - 此兑奖活动仅限年龄满18周岁用户参与；<br>
+        - 所有奖品兑换券仅能通过H5线上互动答题获得，兑换时间仅限2019年5月16日至2019年7月12日（周一至周五11:00-20:00，周六、周日11:00-21:00）；<br>
+        - 奖品兑换券每日数量有限，先到先得，送完即止；<br>
+        - 每个用户每天可不限次数参与H5线上互动答题，每个手机号每日仅可在保乐力加Drinks & Co.中领取一张奖品兑换券；<br>
+        - 所有奖品兑换券均为非卖品，不可折现或转卖；<br>
+        - 凭保乐力加Drinks & Co.中卡券内的奖品兑换券，【ABSOLUT出界勋章奖品兑换券】及【ABSOLUT出界特调奖品兑换券】请前往ABSOLUT
+        LAB（上海市巨鹿路758号3幢1层）进行奖品兑换，奖品兑换券兑奖时间仅限2019年5月16日至2019年7月12日（周一至周五11:00-20:00，周六、周日11:00-21:00），逾期作废；【ABSOLUT指定产品一件免费兑换券】，请在Drinks
+        & Co.小程序中直接做兑换；<br>
+        - 奖品兑换券不可由他人代领；<br>
+        - 兑奖过程中严禁任何作弊行为，一旦发现作弊行为，则取消中奖资格且不予通知。<br>
 
+        *本活动中“ABSOLUT LAB线下创意零售空间”的地址为：上海市巨鹿路758号3幢1层，其零售业务经营方为上海湾里书香图书有限公司。
+
+      </div>
     </div>
-    <div class="dialog secreatList">
-            <div class="rule-box text-white">
-                    <div class="closeBtn">
-                        <span class="close"></span>
-                    </div>
-        <p class="title text-center con">隐私条款</p>
-                <p class="cont">
-                    保乐力加（中国）贸易有限公司（以下称"本公司"或“我们”）尊重每一位客户的隐私权。<br><br>
-                    本隐私权政策（以下称"本政策"）将介绍本公司收集的信息的种类，我们使用该信息的范围与目的、该等信息的处理与转移以及我们对该信息的保护。本政策适用于访问、浏览本公司网站或本公司其他平台的人士或者其它以各种方式进入或使用本公司网站或本公司其他平台的人员。本政策所称“本公司网站”和“本公司其他平台”包括但不限于本公司的官方网站主页及处于同一顶级域名下的其它页面，以及其中的所有内容和所提供的服务、本公司或经过本公司授权运营的公众（订阅）号交流平台及其中本公司或经本公司授权发布的所有内容、本公司应用软件及其提供的服务和发布的所有内容、本公司或本公司授权的电商及其中本公司或经本公司授权提供的服务和发布的所有内容，以下合称“本公司各大平台”。我们的保护隐私权政策源于中国适用的相关工业指导原则和标准，以及地方性的、国内的和国际的相关法律和惯例。相关工业指导原则包括权责一致性原则、目的明确原则、选择同意原则、最少够用原则、公开透明原则、确保安全原则和主体参与原则。<br><br>
-                    通过在电脑、手机、笔记本、控制台或其他设备（以下统称“设备”）上<span
-                        class="blod n">使用或浏览本公司各大平台及其提供的相关服务，意味着您已充分阅读、理解并接受本政策并同意受其约束。</span>如您对本政策的任何部分有任何异议，请勿使用或浏览本公司各大平台。<br><br>
-                    我们可能根据适用的法律法规与其他需要不时对本政策进行更新。我们建议您定期查看本政策以确保您了解具有约束力的本政策的最新版本。
-                    本隐私政策旨在描述本公司普遍的隐私政策，我们的目标是要在对您最具影响的时刻，提供更详细的信息给您。请在我们的服务中注意该等通知。<br><br>
-                    •<span class="blod"> 1. 年龄要求及民事行为能力</span><br>
-                    本公司各大平台仅限于达到当地法定购买酒类年龄的用户使用。如您并未达到您居住地或上网所在地法定购买酒类的年龄，请不要向我们提供您的个人信息（定义如下）。本公司从未意图收集任何未到法定购买酒类年龄的人群的个人信息或向此类人群推广我们的产品。未达到法定购买酒类年龄的用户，禁止使用本公司各大平台以及本公司各大平台所提供的相关服务。为了保证我们仅向达到当地法定购买酒类年龄的用户提供相关服务，我们可能以匿名的方式收集您的出生日期。这些信息将仅用于确认您是否达到了购买酒类的法定年龄，在确定您的年龄后，我们将立即删除这些信息。
-                    如您已经达到当地法定购买酒类年龄但并未取得您居住地或上网所在地完全民事行为能力的，应在您父母或监护人陪同下仔细阅读条款，并征得父母或监护人同意后使用相关产品或服务。完成相关用户注册或者使用相应产品或服务即表示已经取得父母或监护人同意。<br><br>
-                    • <span class="blod">2. 我们可能收集的信息</span><br>
-                    在您访问、浏览和使用本公司各大平台的过程中，我们可能收集关于您的以下信息：<br><br>
-                    1) 您提供的信息，包括您提供的个人信息与您提供的共享信息。
-                    个人信息。个人信息是指与特定自然人相关、能够单独或通过与其他信息结合识别该特定自然人的相关数据。我们仅向您收集您同意并向我们提供的个人信息。我们会收集和保留一定的个人信息，包括但不限于您在注册、登陆、使用本公司各大平台时提供的个人姓名、电话号码、地址和电子邮件等信息、您对于我们产品的消费和喜好信息、位置（GPS）信息、信用卡和支付平台相关信息（如必要）；
-                    共享信息是指您通过社交媒体上传的任何信息或资料，无论是姓名、个人资料、照片、视频、故事、想法、评论、创意概念、信息或其他发布资料。<br><br>
-                    2)
-                    我们从其他方（包括但不限于您授权的第三方、我们的关联公司、母公司以及合作伙伴）处收集的您的信息。我们可能将您提供给我们的或我们收集的信息与来自于本公司渠道、交易和通信的其他信息相结合，可能包括但不限于，来自本公司线上及线下店铺、直邮、产品目录、活动、产品和应用或其他与本公司的互动信息。我们还可能将该等信息与公开资料和来自第三方的数据相结合。我们还收集礼物给予者或您授权的第三方提供的关于礼物接受者或您的信息。如果我们将您提供给我们的或来自与本公司互动而来的或第三方的提供的信息相结合，该等相结合的信息将会被视为个人信息，只要该等信息保持相结合的状态。为预防欺诈和确保安全，我们的关联公司、母公司及合作伙伴会依据适用的法律法规或征得您同意的前提下，向我们分享您的信息。<br><br>
-                    3)
-                    我们自动向您收集的信息。通过该等信息的收集，我们可以了解如何使我们的网站、电商、产品和相关服务更加符合您的需求。<span
-                        class="blod n">您在此明确同意</span>，在您访问、浏览及使用本公司各大平台时，我们可能通过cookies（关于cookies请见下文第4条有关于cookies的详细描述）或其他方式自动采集这些以下<span
-                        class="blod n">设备信息、操作信息和位置信息：</span>
-                    设备信息
-                    设备或软件信息，例如您的移动设备、网页浏览器或用于接入我们服务的其他程序所提供的配置信息、您的IP地址（IP地址是您在使用互联网时为您的计算机分配的一个数字。该信息不包含任何有关您的个人身份识别信息。您的IP地址还用于帮助在某一具体会话过程中对您进行识别以及收集广泛的统计数据）和移动设备所用的版本和设备识别码。<br><br>
-                    操作信息
-                    在使用我们服务时搜索或浏览的信息，例如您使用的网页搜索词语、访问的社交媒体页面url地址，以及您在使用我们服务时浏览或要求提供的其他信息和内容详情；<br><br>
-                    有关您曾使用的移动应用（APP）和其他软件的信息，以及您曾经使用该等移动应用和软件的信息；<br><br>
-                    您通过我们的服务进行通讯的信息，例如曾通讯的账号，以及通讯时间、数据和时长；<br><br>
-                    您访问本公司各大平台或使用我们服务时所进行的操作以及您在本公司各大平台上进行交易的相关信息。<br><br>
-                    位置信息
-                    您通过具有定位功能的移动设备使用我们的服务时，通过GPS或WiFi等方式收集的您的地理位置信息；<br><br>
-                    您或其他用户提供的包含您所处地理位置的实时信息，例如您提供的账户信息中包含的您所在地区信息，您或其他人上传的显示您当前或曾经所处地理位置的共享信息，您或其他人共享的照片包含的地理标记信息；<br>
-                    大多数移动设备将允许您关闭定位服务，我们建议您咨询相关移动设备的销售商或生产商。<br>
-                    如果您不愿意向我们提供上述信息，您仍可访问我们的网站的部分内容，但您可能无法全面享受注册用户的相关权益或参加某些促销活动或收到我们的推广信息。<br><br>
-                    • <span class="blod">3. 关于Cookies</span><br>
-                    Cookie是一种登记用户在使用网站时的偏好，以确保用户获得更佳、更个性化体验的常规方法。该等偏好信息存储于您计算机硬盘驱动器上的文件中。例如，一个cookie可能会包含您所偏好的居住国，这样在您每次访问时我们将无须向您询问该问题。<br><br>
-                    我们还使用“分析”cookie，它使我们能够确认并计算访问者的数量，以及查看这些访问者在使用本公司各大平台时在各大平台上的移动模式。这有助于我们改进本公司各大平台的工作方式，比如确保用户轻松找到所需的内容。<br><br>
-                    我们的网站同时采用持久cookie和会话cookie两种cookie。持久cookies一直驻留在您的计算机上，直到您“手动”删除它们。会话cookies则在您离开一个网站并进入另一个站点或关闭浏览器后自动将自己删除。<br><br>
-                    有关cookies的更多信息，包括如何激活cookie，如何更改浏览器设置以及如何在硬盘驱动器上找到并删除cookie的信息，请参见您浏览器上的帮助菜单或访问以下网站：<br>
-                    www.allaboutcookies.org。<br><br>
-                    • <span class="blod">4. 信息的使用</span><br>
-                    我们会将收集的关于您的信息用于如下方面：<br>
-                    1) 向您提供您使用的各项服务以及其他您可能感兴趣的服务<br>
-                    我们将会使用您提供的个人信息用于您所要求的各项服务，以及其他您可能感兴趣的服务。<br>
-                    在您明示同意的条件下，我们会使用您提供的信息向您联系并发送我们、我们关联公司、母公司以及与之相关的业务的产品、服务与促销信息。这种服务是选择性的，您可随时决定退出这些服务。<br>
-                    2) 改进提供的服务和产品<br>
-                    我们还使用您的个人信息来改进我们的促销工作，以统计学方式分析网站的使用状况；改进我们的内容和提供的产品；按用户的要求制作网站内容、布局和服务项目。我们相信该等使用，使我们能够改进我们的网站，使其更好地为来访人士服务。<br>
-                    3) 按您的要求向第三人发送信息<br>
-                    如您使用了我们的社交媒体，我们也有可能按照您提供的第三人信息向第三人发送您定制的本公司各大平台的信息、资料或服务。我们提醒您我们仅按您的需求向该等第三人发送信息，并未鼓励该等第三人饮用酒类产品。未得到该等个人的明示同意，我们不会向其发送其他相关信息。请确保该等第三人已达到当地购买酒类产品的法定年龄。<br>
-                    4) 用于相关的电商服务<br>
-                    如您使用了本公司各大平台的电商服务，我们还可能使用您的个人信息回复您关于产品购买的询问，记录您的消费信息，在必要时与您联系，以及其他为完成您的订单而使用您的个人信息。<br><br>
-                    • <span class="blod">5. 集成和统计数据的使用</span><br>
-                    本公司利用网站记录信息（如：你的网站浏览器、操作系统、所查看的网页等）来帮助我们设计网站、识别热销的特色产品，及用于其他管理方面。我们以匿名化的方式使用这些信息，例如有多少用户访问了本公司各大平台，有多少网页被访问等等。我们不会将这些信息识别塔顶个人。但是，必要时，我们会使用网站记录以帮助识别是否有人想闯入或破坏我们的网站，如果我们确信有证据表明有破坏计算机安全或违反有关法律的行为，我们会与执法部门共享网站记录信息。<br><br>
-                    • <span class="blod">6. 信息共享</span><br>
-                    在没有得到您同意时，我们不会将来访人士的个人信息，分享给任何与本公司向您提供服务不相关的企业或个人使用。但是，您在此充分理解并明确同意，在以下情况下，我们将与第三方共享您的个人信息，前提是该等第三方明确了解并遵守本政策，并以不低于本政策的程度对您的个人信息进行保护：<br>
-                    a. 作为保乐力加集团的一员，我们可能在提供本公司各大平台服务时使用我们关联公司或母公司的资源，因此，在遵守当地法律的情况下，我们可能向我们关联公司或母公司披露您的个人信息；<br>
-                    b. 任何经您同意共享信息的第三方；<br>
-                    c. 当您使用一些特定的服务（包括但不限于订阅我们的微信公众号、成为我们社交平台的用户）时，您同意向我们提供或公开分享一些基本的信息，可能包括您的用户名、所在城市和头像图片；<br>
-                    d.
-                    您可以选择共享特定的信息。为了使用特定的功能，您可能需要调整您的隐私设置并且分享更多的信息。您也可以选择将您的活动于其他平台上共享，例如微博和微信。请阅读该等平台的隐私政策，因为您在该等平台上公开的活动将不再适用本公司的隐私政策；<br>
-                    e. 公开共享的信息可能会被我们用于推广目的；<br>
-                    f.
-                    为更好地向您提供服务，我们可能将您的信息提供给我们的代理、供应商、分包商或合作伙伴以供其代表我们履行本公司各大平台的服务（例如：提供社交媒体上的服务的供应商）或向您提供本公司各大平台或您要求的其他服务，包括但不限于为完成您的订单而向仓储或物流公司提供的您的订单信息、为完成交易而与支付相关方提供您的信用卡与支付信息、向我们广告与市场供应商提供您的信息供其向您发送相关信息、为分析网站的使用情况而与分析方共享我们相关的数据、以及其他为服务之目的与第三方共享您的个人信息。但上述人员不得将该信息用于其他方面也不能与不共同提供服务的任何第三方共享或重新出售这种数据。同时，上述人员使用您的个人信息的范围将仅限于与本公司为您提供服务相关的服务；<br>
-                    g. 在出售业务、合并、重组、转换控制权、转移重大资产、融资或清算的情况下，我们可能向第三方转让、出售或指定向第三方转移包含您的个人信息在内的业务；<br>
-                    h. 在强制执行、政府或法律部门或其他为遵循法律强制规定的第三方要求下，在我们相信为遵守法律的强制规定有必要的前提下，或者我们为调查、保护或为本公司抗辩的情况下，我们可能会与第三方分享您的信息。<br><br>
-                    • <span class="blod">7. 第三方追踪</span><br>
-                    我们还与其他代表我们在整个互联网上使用追踪技术来投放广告的公司合作。这些公司可能收集您与我们的互动信息，包括广告。如果您希望选择退出接收与本网站相关的第三方追踪技术制作的广告，请点击这里。请注意，如果您选择退出这些第三方追踪技术，您可能仍会看到其他网站上我们的广告，但是该等广告并非与本网站相关的第三方利用追踪技术制作的广告。<br><br>
-                    • <span class="blod">8. 信息的存放和转移</span><br>
-                    通过向我们提供信息，<span
-                        class="blod n">您充分知晓、理解并明确同意</span>，在遵守当地法律法规的前提下，我们可能将该等个人信息转移至其他国家或地区，或者在这些国家或地区对个人信息进行处理。我们对个人信息的存放、转移与处理都将遵循本政策相关规定；<span
-                        class="blod n">您充分知晓、理解并明确同意</span>您的个人信息将通常被储存在本公司的数据库内，该种数据库分布于世界各地，包括美国与欧盟，并将根据本公司业务需要进行转移。信息的存储期限系从收集之日起至本公司收到您的请求（本政策第10条之请求）并删除之日止。无论您的个人信息储存在何处，本公司都会采取同样的数据保护标准，并按照本声明所规定的方式和目的使用您的个人信息。<br><br>
-                    • <span class="blod">9. 信息安全、风险揭示与责任</span><br>
-                    本公司承诺将保护您提供给我们的个人信息的安全，并采取合理的防范措施，以免您的个人信息被丢失、滥用或更改。我们承诺采用适当的物理、电子以及其他手段与程序保护我们收集到的个人信息。<br>
-                    鉴于本公司的代理、供应商、分包商或合作伙伴，在向本公司提供服务时，能够看到您的个人信息，我们则要求他们对该信息进行保密，除了在为本公司提供服务方面，不得以任何其他方式和目的使用该信息。<br>
-                    本公司对您提供的各项个人信息的内容将不进行评价、更改或确认，本公司对您的个人信息的采集、使用和披露均是本公司相关网站的自动筛选行为，本公司不对您的个人信息进行内容审核和修改，因此，为了本公司为您提供准确有效的各项服务，强烈建议您保证确保您提供的个人信息的准确性和真实性。<br>
-                    您需要明确，同其他公司一样，对于您与我们所进行的交流中所含的个人信息，我们并不能完全保护。并且，您在社交媒体上发布的任何信息通常是公开并且不受保护的，可能会被其它人收集并使用，从而导致非自愿地收到来自其它人的信息。因此，我们建议您在上述的交流与社交媒体上不要包含任何保密、专有或其他敏感的个人信息。<br>
-                    尽管有上述约定，本公司并不保证您的信息不受不可抗力、恶意计算机程序等的侵害。<br><br>
-                    • <span class="blod">10. 请求</span><br>
-                    您有权访问、更正和删除保乐力加所掌握的您的数据，您有权撤回同意、获取个人信息副本。经您要求，我们将会尽合理的努力从本公司以及按本政策条款共享您的个人信息的第三方的后台文件中更正、删除您的可识别信息。<br>
-                    经您请求，本公司被动停止提供产品或服务时，将停止继续收集个人信息，但我们有权继续保存停止服务前已经收集的个人信息，且有权继续使用经匿名化处理的信息。<br>
-                    如您当前正接收保乐力加的直接营销，但不希望保乐力加继续使用或向他人提供您的资料用于直接营销，则您可通过【发出书面请求/点击退订链接】行使您的退出选择权，且无需支付费用。要取消订阅、停止接收消息，请更改您的设置或按照电子邮件、短信、通知或其他消息类型的指示进行。如您取消订阅任何关于本公司的通信，由于通信制作周期的原因，您仍可能接收到已在制作中的通信。<br><br>
-                    • <span class="blod">11. 第三方链接</span><br>
-                    本公司各大平台可能含有我们无法控制的其他第三方的链接、推介与内容。请注意我们对于此类网站仅有有限的或无法对该类网站进行控制与管理。本政策并不适用该等网站。我们强烈建议您在访问、浏览和使用该等网站时阅读他们的隐私权政策以及条款与条件。<br><br>
-                    • <span class="blod">12 注销账户及其他咨询联系方式</span><br>
-                    如您有任何需求需要我们协助（包括本政策第10条之请求，以及其他询问、投诉的），请按以下联系方式与我们联系：<br>
-                    公司名称：保乐力加(中国)贸易有限公司<br>
-                    注册地址：上海市黄浦区湖滨路168号1501室<br>
-                    通讯地址：中国上海市湖滨路168号无限极大厦15楼<br>
-                    邮政编码: 200021<br>
-                    负责人：符蓉<br>
-                    电话：+8621 2301 1000<br>
-                    电子邮件：CRM_Service@pernod-ricard.com<br><br>
-                    • <span class="blod">13. 外部纠纷解决机构及联络方式</span><br>
-                    任何在本协议项下产生的或与本协议相关的争端应首先友好协商。协商不成的，任一方可提交上海国际经济贸易仲裁委员会依据其仲裁规则予以仲裁。仲裁地在上海。仲裁结果是终局的，对双方具有约束力。<br>
-                    上海国际经济贸易仲裁委员会的联络方式请您参见其官方网站http://www.cietac-sh.org/SHIAC/index.aspx。
-                </p>
-                </div>
-            
+
+  </div>
+  <div class="dialog secreatList">
+    <div class="rule-box text-white">
+      <div class="closeBtn">
+        <span class="close"></span>
+      </div>
+      <p class="title text-center con">隐私条款</p>
+      <p class="cont">
+        保乐力加（中国）贸易有限公司（以下称"本公司"或“我们”）尊重每一位客户的隐私权。<br><br>
+        本隐私权政策（以下称"本政策"）将介绍本公司收集的信息的种类，我们使用该信息的范围与目的、该等信息的处理与转移以及我们对该信息的保护。本政策适用于访问、浏览本公司网站或本公司其他平台的人士或者其它以各种方式进入或使用本公司网站或本公司其他平台的人员。本政策所称“本公司网站”和“本公司其他平台”包括但不限于本公司的官方网站主页及处于同一顶级域名下的其它页面，以及其中的所有内容和所提供的服务、本公司或经过本公司授权运营的公众（订阅）号交流平台及其中本公司或经本公司授权发布的所有内容、本公司应用软件及其提供的服务和发布的所有内容、本公司或本公司授权的电商及其中本公司或经本公司授权提供的服务和发布的所有内容，以下合称“本公司各大平台”。我们的保护隐私权政策源于中国适用的相关工业指导原则和标准，以及地方性的、国内的和国际的相关法律和惯例。相关工业指导原则包括权责一致性原则、目的明确原则、选择同意原则、最少够用原则、公开透明原则、确保安全原则和主体参与原则。<br><br>
+        通过在电脑、手机、笔记本、控制台或其他设备（以下统称“设备”）上<span
+          class="blod n">使用或浏览本公司各大平台及其提供的相关服务，意味着您已充分阅读、理解并接受本政策并同意受其约束。</span>如您对本政策的任何部分有任何异议，请勿使用或浏览本公司各大平台。<br><br>
+        我们可能根据适用的法律法规与其他需要不时对本政策进行更新。我们建议您定期查看本政策以确保您了解具有约束力的本政策的最新版本。
+        本隐私政策旨在描述本公司普遍的隐私政策，我们的目标是要在对您最具影响的时刻，提供更详细的信息给您。请在我们的服务中注意该等通知。<br><br>
+        •<span class="blod"> 1. 年龄要求及民事行为能力</span><br>
+        本公司各大平台仅限于达到当地法定购买酒类年龄的用户使用。如您并未达到您居住地或上网所在地法定购买酒类的年龄，请不要向我们提供您的个人信息（定义如下）。本公司从未意图收集任何未到法定购买酒类年龄的人群的个人信息或向此类人群推广我们的产品。未达到法定购买酒类年龄的用户，禁止使用本公司各大平台以及本公司各大平台所提供的相关服务。为了保证我们仅向达到当地法定购买酒类年龄的用户提供相关服务，我们可能以匿名的方式收集您的出生日期。这些信息将仅用于确认您是否达到了购买酒类的法定年龄，在确定您的年龄后，我们将立即删除这些信息。
+        如您已经达到当地法定购买酒类年龄但并未取得您居住地或上网所在地完全民事行为能力的，应在您父母或监护人陪同下仔细阅读条款，并征得父母或监护人同意后使用相关产品或服务。完成相关用户注册或者使用相应产品或服务即表示已经取得父母或监护人同意。<br><br>
+        • <span class="blod">2. 我们可能收集的信息</span><br>
+        在您访问、浏览和使用本公司各大平台的过程中，我们可能收集关于您的以下信息：<br><br>
+        1) 您提供的信息，包括您提供的个人信息与您提供的共享信息。
+        个人信息。个人信息是指与特定自然人相关、能够单独或通过与其他信息结合识别该特定自然人的相关数据。我们仅向您收集您同意并向我们提供的个人信息。我们会收集和保留一定的个人信息，包括但不限于您在注册、登陆、使用本公司各大平台时提供的个人姓名、电话号码、地址和电子邮件等信息、您对于我们产品的消费和喜好信息、位置（GPS）信息、信用卡和支付平台相关信息（如必要）；
+        共享信息是指您通过社交媒体上传的任何信息或资料，无论是姓名、个人资料、照片、视频、故事、想法、评论、创意概念、信息或其他发布资料。<br><br>
+        2)
+        我们从其他方（包括但不限于您授权的第三方、我们的关联公司、母公司以及合作伙伴）处收集的您的信息。我们可能将您提供给我们的或我们收集的信息与来自于本公司渠道、交易和通信的其他信息相结合，可能包括但不限于，来自本公司线上及线下店铺、直邮、产品目录、活动、产品和应用或其他与本公司的互动信息。我们还可能将该等信息与公开资料和来自第三方的数据相结合。我们还收集礼物给予者或您授权的第三方提供的关于礼物接受者或您的信息。如果我们将您提供给我们的或来自与本公司互动而来的或第三方的提供的信息相结合，该等相结合的信息将会被视为个人信息，只要该等信息保持相结合的状态。为预防欺诈和确保安全，我们的关联公司、母公司及合作伙伴会依据适用的法律法规或征得您同意的前提下，向我们分享您的信息。<br><br>
+        3)
+        我们自动向您收集的信息。通过该等信息的收集，我们可以了解如何使我们的网站、电商、产品和相关服务更加符合您的需求。<span
+          class="blod n">您在此明确同意</span>，在您访问、浏览及使用本公司各大平台时，我们可能通过cookies（关于cookies请见下文第4条有关于cookies的详细描述）或其他方式自动采集这些以下<span
+          class="blod n">设备信息、操作信息和位置信息：</span>
+        设备信息
+        设备或软件信息，例如您的移动设备、网页浏览器或用于接入我们服务的其他程序所提供的配置信息、您的IP地址（IP地址是您在使用互联网时为您的计算机分配的一个数字。该信息不包含任何有关您的个人身份识别信息。您的IP地址还用于帮助在某一具体会话过程中对您进行识别以及收集广泛的统计数据）和移动设备所用的版本和设备识别码。<br><br>
+        操作信息
+        在使用我们服务时搜索或浏览的信息，例如您使用的网页搜索词语、访问的社交媒体页面url地址，以及您在使用我们服务时浏览或要求提供的其他信息和内容详情；<br><br>
+        有关您曾使用的移动应用（APP）和其他软件的信息，以及您曾经使用该等移动应用和软件的信息；<br><br>
+        您通过我们的服务进行通讯的信息，例如曾通讯的账号，以及通讯时间、数据和时长；<br><br>
+        您访问本公司各大平台或使用我们服务时所进行的操作以及您在本公司各大平台上进行交易的相关信息。<br><br>
+        位置信息
+        您通过具有定位功能的移动设备使用我们的服务时，通过GPS或WiFi等方式收集的您的地理位置信息；<br><br>
+        您或其他用户提供的包含您所处地理位置的实时信息，例如您提供的账户信息中包含的您所在地区信息，您或其他人上传的显示您当前或曾经所处地理位置的共享信息，您或其他人共享的照片包含的地理标记信息；<br>
+        大多数移动设备将允许您关闭定位服务，我们建议您咨询相关移动设备的销售商或生产商。<br>
+        如果您不愿意向我们提供上述信息，您仍可访问我们的网站的部分内容，但您可能无法全面享受注册用户的相关权益或参加某些促销活动或收到我们的推广信息。<br><br>
+        • <span class="blod">3. 关于Cookies</span><br>
+        Cookie是一种登记用户在使用网站时的偏好，以确保用户获得更佳、更个性化体验的常规方法。该等偏好信息存储于您计算机硬盘驱动器上的文件中。例如，一个cookie可能会包含您所偏好的居住国，这样在您每次访问时我们将无须向您询问该问题。<br><br>
+        我们还使用“分析”cookie，它使我们能够确认并计算访问者的数量，以及查看这些访问者在使用本公司各大平台时在各大平台上的移动模式。这有助于我们改进本公司各大平台的工作方式，比如确保用户轻松找到所需的内容。<br><br>
+        我们的网站同时采用持久cookie和会话cookie两种cookie。持久cookies一直驻留在您的计算机上，直到您“手动”删除它们。会话cookies则在您离开一个网站并进入另一个站点或关闭浏览器后自动将自己删除。<br><br>
+        有关cookies的更多信息，包括如何激活cookie，如何更改浏览器设置以及如何在硬盘驱动器上找到并删除cookie的信息，请参见您浏览器上的帮助菜单或访问以下网站：<br>
+        www.allaboutcookies.org。<br><br>
+        • <span class="blod">4. 信息的使用</span><br>
+        我们会将收集的关于您的信息用于如下方面：<br>
+        1) 向您提供您使用的各项服务以及其他您可能感兴趣的服务<br>
+        我们将会使用您提供的个人信息用于您所要求的各项服务，以及其他您可能感兴趣的服务。<br>
+        在您明示同意的条件下，我们会使用您提供的信息向您联系并发送我们、我们关联公司、母公司以及与之相关的业务的产品、服务与促销信息。这种服务是选择性的，您可随时决定退出这些服务。<br>
+        2) 改进提供的服务和产品<br>
+        我们还使用您的个人信息来改进我们的促销工作，以统计学方式分析网站的使用状况；改进我们的内容和提供的产品；按用户的要求制作网站内容、布局和服务项目。我们相信该等使用，使我们能够改进我们的网站，使其更好地为来访人士服务。<br>
+        3) 按您的要求向第三人发送信息<br>
+        如您使用了我们的社交媒体，我们也有可能按照您提供的第三人信息向第三人发送您定制的本公司各大平台的信息、资料或服务。我们提醒您我们仅按您的需求向该等第三人发送信息，并未鼓励该等第三人饮用酒类产品。未得到该等个人的明示同意，我们不会向其发送其他相关信息。请确保该等第三人已达到当地购买酒类产品的法定年龄。<br>
+        4) 用于相关的电商服务<br>
+        如您使用了本公司各大平台的电商服务，我们还可能使用您的个人信息回复您关于产品购买的询问，记录您的消费信息，在必要时与您联系，以及其他为完成您的订单而使用您的个人信息。<br><br>
+        • <span class="blod">5. 集成和统计数据的使用</span><br>
+        本公司利用网站记录信息（如：你的网站浏览器、操作系统、所查看的网页等）来帮助我们设计网站、识别热销的特色产品，及用于其他管理方面。我们以匿名化的方式使用这些信息，例如有多少用户访问了本公司各大平台，有多少网页被访问等等。我们不会将这些信息识别塔顶个人。但是，必要时，我们会使用网站记录以帮助识别是否有人想闯入或破坏我们的网站，如果我们确信有证据表明有破坏计算机安全或违反有关法律的行为，我们会与执法部门共享网站记录信息。<br><br>
+        • <span class="blod">6. 信息共享</span><br>
+        在没有得到您同意时，我们不会将来访人士的个人信息，分享给任何与本公司向您提供服务不相关的企业或个人使用。但是，您在此充分理解并明确同意，在以下情况下，我们将与第三方共享您的个人信息，前提是该等第三方明确了解并遵守本政策，并以不低于本政策的程度对您的个人信息进行保护：<br>
+        a. 作为保乐力加集团的一员，我们可能在提供本公司各大平台服务时使用我们关联公司或母公司的资源，因此，在遵守当地法律的情况下，我们可能向我们关联公司或母公司披露您的个人信息；<br>
+        b. 任何经您同意共享信息的第三方；<br>
+        c. 当您使用一些特定的服务（包括但不限于订阅我们的微信公众号、成为我们社交平台的用户）时，您同意向我们提供或公开分享一些基本的信息，可能包括您的用户名、所在城市和头像图片；<br>
+        d.
+        您可以选择共享特定的信息。为了使用特定的功能，您可能需要调整您的隐私设置并且分享更多的信息。您也可以选择将您的活动于其他平台上共享，例如微博和微信。请阅读该等平台的隐私政策，因为您在该等平台上公开的活动将不再适用本公司的隐私政策；<br>
+        e. 公开共享的信息可能会被我们用于推广目的；<br>
+        f.
+        为更好地向您提供服务，我们可能将您的信息提供给我们的代理、供应商、分包商或合作伙伴以供其代表我们履行本公司各大平台的服务（例如：提供社交媒体上的服务的供应商）或向您提供本公司各大平台或您要求的其他服务，包括但不限于为完成您的订单而向仓储或物流公司提供的您的订单信息、为完成交易而与支付相关方提供您的信用卡与支付信息、向我们广告与市场供应商提供您的信息供其向您发送相关信息、为分析网站的使用情况而与分析方共享我们相关的数据、以及其他为服务之目的与第三方共享您的个人信息。但上述人员不得将该信息用于其他方面也不能与不共同提供服务的任何第三方共享或重新出售这种数据。同时，上述人员使用您的个人信息的范围将仅限于与本公司为您提供服务相关的服务；<br>
+        g. 在出售业务、合并、重组、转换控制权、转移重大资产、融资或清算的情况下，我们可能向第三方转让、出售或指定向第三方转移包含您的个人信息在内的业务；<br>
+        h.
+        在强制执行、政府或法律部门或其他为遵循法律强制规定的第三方要求下，在我们相信为遵守法律的强制规定有必要的前提下，或者我们为调查、保护或为本公司抗辩的情况下，我们可能会与第三方分享您的信息。<br><br>
+        • <span class="blod">7. 第三方追踪</span><br>
+        我们还与其他代表我们在整个互联网上使用追踪技术来投放广告的公司合作。这些公司可能收集您与我们的互动信息，包括广告。如果您希望选择退出接收与本网站相关的第三方追踪技术制作的广告，请点击这里。请注意，如果您选择退出这些第三方追踪技术，您可能仍会看到其他网站上我们的广告，但是该等广告并非与本网站相关的第三方利用追踪技术制作的广告。<br><br>
+        • <span class="blod">8. 信息的存放和转移</span><br>
+        通过向我们提供信息，<span
+          class="blod n">您充分知晓、理解并明确同意</span>，在遵守当地法律法规的前提下，我们可能将该等个人信息转移至其他国家或地区，或者在这些国家或地区对个人信息进行处理。我们对个人信息的存放、转移与处理都将遵循本政策相关规定；<span
+          class="blod n">您充分知晓、理解并明确同意</span>您的个人信息将通常被储存在本公司的数据库内，该种数据库分布于世界各地，包括美国与欧盟，并将根据本公司业务需要进行转移。信息的存储期限系从收集之日起至本公司收到您的请求（本政策第10条之请求）并删除之日止。无论您的个人信息储存在何处，本公司都会采取同样的数据保护标准，并按照本声明所规定的方式和目的使用您的个人信息。<br><br>
+        • <span class="blod">9. 信息安全、风险揭示与责任</span><br>
+        本公司承诺将保护您提供给我们的个人信息的安全，并采取合理的防范措施，以免您的个人信息被丢失、滥用或更改。我们承诺采用适当的物理、电子以及其他手段与程序保护我们收集到的个人信息。<br>
+        鉴于本公司的代理、供应商、分包商或合作伙伴，在向本公司提供服务时，能够看到您的个人信息，我们则要求他们对该信息进行保密，除了在为本公司提供服务方面，不得以任何其他方式和目的使用该信息。<br>
+        本公司对您提供的各项个人信息的内容将不进行评价、更改或确认，本公司对您的个人信息的采集、使用和披露均是本公司相关网站的自动筛选行为，本公司不对您的个人信息进行内容审核和修改，因此，为了本公司为您提供准确有效的各项服务，强烈建议您保证确保您提供的个人信息的准确性和真实性。<br>
+        您需要明确，同其他公司一样，对于您与我们所进行的交流中所含的个人信息，我们并不能完全保护。并且，您在社交媒体上发布的任何信息通常是公开并且不受保护的，可能会被其它人收集并使用，从而导致非自愿地收到来自其它人的信息。因此，我们建议您在上述的交流与社交媒体上不要包含任何保密、专有或其他敏感的个人信息。<br>
+        尽管有上述约定，本公司并不保证您的信息不受不可抗力、恶意计算机程序等的侵害。<br><br>
+        • <span class="blod">10. 请求</span><br>
+        您有权访问、更正和删除保乐力加所掌握的您的数据，您有权撤回同意、获取个人信息副本。经您要求，我们将会尽合理的努力从本公司以及按本政策条款共享您的个人信息的第三方的后台文件中更正、删除您的可识别信息。<br>
+        经您请求，本公司被动停止提供产品或服务时，将停止继续收集个人信息，但我们有权继续保存停止服务前已经收集的个人信息，且有权继续使用经匿名化处理的信息。<br>
+        如您当前正接收保乐力加的直接营销，但不希望保乐力加继续使用或向他人提供您的资料用于直接营销，则您可通过【发出书面请求/点击退订链接】行使您的退出选择权，且无需支付费用。要取消订阅、停止接收消息，请更改您的设置或按照电子邮件、短信、通知或其他消息类型的指示进行。如您取消订阅任何关于本公司的通信，由于通信制作周期的原因，您仍可能接收到已在制作中的通信。<br><br>
+        • <span class="blod">11. 第三方链接</span><br>
+        本公司各大平台可能含有我们无法控制的其他第三方的链接、推介与内容。请注意我们对于此类网站仅有有限的或无法对该类网站进行控制与管理。本政策并不适用该等网站。我们强烈建议您在访问、浏览和使用该等网站时阅读他们的隐私权政策以及条款与条件。<br><br>
+        • <span class="blod">12 注销账户及其他咨询联系方式</span><br>
+        如您有任何需求需要我们协助（包括本政策第10条之请求，以及其他询问、投诉的），请按以下联系方式与我们联系：<br>
+        公司名称：保乐力加(中国)贸易有限公司<br>
+        注册地址：上海市黄浦区湖滨路168号1501室<br>
+        通讯地址：中国上海市湖滨路168号无限极大厦15楼<br>
+        邮政编码: 200021<br>
+        负责人：符蓉<br>
+        电话：+8621 2301 1000<br>
+        电子邮件：CRM_Service@pernod-ricard.com<br><br>
+        • <span class="blod">13. 外部纠纷解决机构及联络方式</span><br>
+        任何在本协议项下产生的或与本协议相关的争端应首先友好协商。协商不成的，任一方可提交上海国际经济贸易仲裁委员会依据其仲裁规则予以仲裁。仲裁地在上海。仲裁结果是终局的，对双方具有约束力。<br>
+        上海国际经济贸易仲裁委员会的联络方式请您参见其官方网站http://www.cietac-sh.org/SHIAC/index.aspx。
+      </p>
     </div>
-    <img src="./img/lexiang.png" class="footImg" alt="">
+
+  </div>
+  <img src="./img/lexiang.png" class="footImg" alt="">
 </body>
 <script src="./js/jq.min.js"></script>
 <script src="./js/loadImg.js"></script>
 <script>
-    $('.page').on('touchmove', function(event) {
-      event.preventDefault();
-    });
-    window.onload=function () {
-    document.fonts.ready.then(function() {
-        var loader = new resLoader({
+  $('.page').on('touchmove', function (event) {
+    event.preventDefault();
+  });
+  window.onload = function () {
+    document.fonts.ready.then(function () {
+      var loader = new resLoader({
         resources: [
-            './img/bg-1-1.jpg',
-            './img/nike.png',
-            './img/alert.png',
-            './img/greenBall.png',
-            './img/logo.png',
-            './img/absolut.png',
-            './img/start.png',
-            './img/cancel.png',
-            './img/close.png'
+          './img/bg-1-1.jpg',
+          './img/nike.png',
+          './img/alert.png',
+          './img/greenBall.png',
+          './img/logo.png',
+          './img/absolut.png',
+          './img/start.png',
+          './img/cancel.png',
+          './img/close.png'
         ],
         onStart: function (total) {
         },
         onProgress: function (current, total) {
         },
         onComplete: function (total) {
-            imgComplete = true;
-            $('body').show()
+          imgComplete = true;
+          $('body').show()
         }
-        });
-        loader.start();
-        
-    
-    var ua = navigator.userAgent,
+      });
+      loader.start();
+
+
+      var ua = navigator.userAgent,
         isTablet = /(?:iPad|PlayBook|pad)/i.test(ua);
-    if (isTablet) {
+      if (isTablet) {
         $('.bg').addClass('pad-top')
-    };
-    $('.input-box').click(function () {
+      };
+      $('.input-box').click(function () {
         $('.check').toggleClass('nike')
-    })
-    $('.ruleBtn').click(function () {
+      })
+      $('.ruleBtn').click(function () {
         $('.ruleList').show()
-    })
-    $('.screatBtn').click(function () {
+      })
+      $('.screatBtn').click(function () {
         $('.secreatList').show()
-    })
-    $('.closeBtn').click(function () {
+      })
+      $('.closeBtn').click(function () {
         $('.ruleList').hide();
         $('.secreatList').hide()
-    })
-    $('.close, .closeImg').click(function () {
+      })
+      $('.close, .closeImg').click(function () {
         $(this).parents('.dialog').hide()
-    })
-    $('.start').click(function () {
+      })
+      $('.start').click(function () {
         if ($('.check').hasClass('nike')) {
           window.location.replace('question.html');
         } else {
           $('.tip').show()
         }
-    })
-});
-}
-</script>
-<script>
-    var _jcq = _jcq || [];
-    _jcq.enableHeatmap = true;
-    _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
-    _jcq.push(['_pageview']);
+      })
+    });
+  }
+  
+  var _jcq = _jcq || [];
+  _jcq.enableHeatmap = true;
+  _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
+  _jcq.push(['_pageview']);
 
-    (function() {
+  (function () {
     var jc = document.createElement('script'); jc.async = true;
     jc.src = '//' + 'cdn.jice.io/js/jice.min.js';
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(jc, s);
-    })();
+  })();
 </script>
+
 </html>
