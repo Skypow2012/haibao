@@ -58,25 +58,6 @@
           clearTimeout(tid);
           tid = setTimeout(refreshRem, 300);
         }
-<<<<<<< HEAD
-        @media only screen and (min-device-width : 375px) and (max-device-width : 412px) {
-            ./*flex {
-                bottom: -1.5rem;
-            }*/
-        }
-        @media only screen and (min-device-width : 412px) and (max-device-width : 768px) {
-            ./*ip8 {
-                bottom: 1rem;
-            }*/
-        }
-        @media only screen and (min-device-width : 375px) and (min-device-height : 800px) {
-            .img {
-                width: 4.1rem;
-                margin-top: -1rem;
-            }
-        }
-    </style>
-=======
       }, false);
       if (doc.readyState === "complete") {
         doc.body.style.fontSize = "16px";
@@ -170,18 +151,24 @@
       margin-top: 0;
       margin-bottom: -.5rem;
     }
-
-    .back {
-      position: absolute;
-      left: 4%;
+    @media only screen and (min-device-width : 375px) and (min-device-height : 800px) {
+      .img {
+          width: 4.1rem;
+          margin-top: -1rem;
+      }
     }
+    @media screen and (min-width: 750px) {
+      .back {
+        position: absolute;
+        left: 4%;
+      }
 
-    .next {
-      position: absolute;
-      right: 4%;
+      .next {
+        position: absolute;
+        right: 4%;
+      }
     }
   </style>
->>>>>>> 51379225cb670fe04638278d5c67182e3c6981e3
 </head>
 
 <body>
