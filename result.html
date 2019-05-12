@@ -508,6 +508,54 @@
       var s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(jc, s);
     })();
+
+    $('.sure').on('click', function(){
+        var name = sessionStorage.getItem("name");
+        switch (name) {
+            case 'CHINABEAUTY':
+                _jcq.push(['_track', "bhv_lp_step02_01_next"]);
+                return;
+            case 'BEACHBEAUTY':
+                _jcq.push(['_track', "bhv_lp_step02_02_next"]);
+                return;
+            case 'GENTLEMAN':
+                _jcq.push(['_track', "bhv_lp_step02_03_next"]);
+                return;
+            case 'JAPANESESWEETIE':
+                _jcq.push(['_track', "bhv_lp_step02_04_next"]);
+                return;
+            case 'ROCKSTAR':
+                _jcq.push(['_track', "bhv_lp_step02_05_next"]);
+                return;
+            case 'ITALIANORCHARD':
+                _jcq.push(['_track', "bhv_lp_step02_06_next"]);
+                return;
+        }
+    });
+
+    $('.change').on('click', function(){
+        var name = sessionStorage.getItem("name");
+        switch (name) {
+            case 'CHINABEAUTY':
+                _jcq.push(['_track', "bhv_lp_step02_01_display"]);
+                return;
+            case 'BEACHBEAUTY':
+                _jcq.push(['_track', "bhv_lp_step02_02_display"]);
+                return;
+            case 'GENTLEMAN':
+                _jcq.push(['_track', "bhv_lp_step02_03_display"]);
+                return;
+            case 'JAPANESESWEETIE':
+                _jcq.push(['_track', "bhv_lp_step02_04_display"]);
+                return;
+            case 'ROCKSTAR':
+                _jcq.push(['_track', "bhv_lp_step02_05_display"]);
+                return;
+            case 'ITALIANORCHARD':
+                _jcq.push(['_track', "bhv_lp_step02_06_display"]);
+                return;
+        }
+    });
   </script>
 </body>
 

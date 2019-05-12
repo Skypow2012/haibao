@@ -680,6 +680,30 @@
       var s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(jc, s);
     })();
+
+    $('.green').on('click', function(){
+        var name = sessionStorage.getItem("name");
+        switch (name) {
+            case 'CHINABEAUTY':
+                _jcq.push(['_track', "bhv_lp_step03_interactive_01"]);
+                return;
+            case 'BEACHBEAUTY':
+                _jcq.push(['_track', "bhv_lp_step03_interactive_02"]);
+                return;
+            case 'GENTLEMAN':
+                _jcq.push(['_track', "bhv_lp_step03_interactive_03"]);
+                return;
+            case 'JAPANESESWEETIE':
+                _jcq.push(['_track', "bhv_lp_step03_interactive_04"]);
+                return;
+            case 'ROCKSTAR':
+                _jcq.push(['_track', "bhv_lp_step03_interactive_05"]);
+                return;
+            case 'ITALIANORCHARD':
+                _jcq.push(['_track', "bhv_lp_step03_interactive_06"]);
+                return;
+        }
+    });
   </script>
 </body>
 

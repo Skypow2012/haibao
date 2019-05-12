@@ -336,6 +336,30 @@
       var s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(jc, s);
     })();
+
+    $('.bot').on('click', function(){
+        var index = $(this).data('index');
+        switch (index) {
+            case 0:
+                _jcq.push(['_track', "bhv_lp_step02_01_display01"]);
+                return;
+            case 1:
+                _jcq.push(['_track', "bhv_lp_tep02_01_display02"]);
+                return;
+            case 2:
+                _jcq.push(['_track', "bhv_lp_step02_01_display03"]);
+                return;
+            case 3:
+                _jcq.push(['_track', "bhv_lp_step02_01_display04"]);
+                return;
+            case 4:
+                _jcq.push(['_track', "bhv_lp_step02_01_display05"]);
+                return;
+            case 5:
+                _jcq.push(['_track', "bhv_lp_step02_01_display06"]);
+                return;
+        }
+    });
   </script>
 </body>
 
