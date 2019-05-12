@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绝对鲜造专属风味瓶</title>
+    <link rel="stylesheet" href="./css/animate.css">
+    <script>
+        (function (designWidth, maxWidth) {
+            var doc = document,
+                win = window,
+                docEl = doc.documentElement,
+                remStyle = document.createElement("style"),
+                tid;
+
+            function refreshRem() {
+                var width = docEl.getBoundingClientRect().width;
+                maxWidth = maxWidth || 540;
+                width > maxWidth && (width = maxWidth);
+                var rem = width * 100 / designWidth;
+                remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+            }
+            if (docEl.firstElementChild) {
+                docEl.firstElementChild.appendChild(remStyle);
+            } else {
+                var wrap = doc.createElement("div");
+                wrap.appendChild(remStyle);
+                doc.write(wrap.innerHTML);
+                wrap = null;
+            }
+            //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+            refreshRem();
+            win.addEventListener("resize", function () {
+                clearTimeout(tid); //防止执行两次
+                tid = setTimeout(refreshRem, 300);
+            }, false);
+
+            win.addEventListener("pageshow", function (e) {
+                if (e.persisted) { // 浏览器后退的时候重新计算
+                    clearTimeout(tid);
+                    tid = setTimeout(refreshRem, 300);
+                }
+            }, false);
+            if (doc.readyState === "complete") {
+                doc.body.style.fontSize = "16px";
+            } else {
+                doc.addEventListener("DOMContentLoaded", function (e) {
+                    doc.body.style.fontSize = "16px";
+                }, false);
+            }
+        })(750, 750);
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+        @font-face{
+            font-family: 'Medium';
+            src: url('./font/china/SourceHanSansCN-Medium.otf')
+        }
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #e42eff;
+        }
+
+        body {
+            display: none;
+            background: url('./img/bg-2.png') center top no-repeat;
+            background-size: 100% auto;
+            text-align: center
+        }
+
+        .footer {
+            width: 3.4rem;
+            position: absolute;
+            bottom: 0;
+            left: .6rem;
+        }
+
+        .box {
+            width: 4rem;
+            height: 1rem;
+            position: absolute;
+            margin: auto;
+            top: -2rem;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+            -webkit-animation-iteration-count: 2;
+            animation-iteration-count: 2
+        }
+        .load{
+            width: 1.08rem;
+        }
+        .make{
+            width: 2.5rem;
+            margin-top: .16rem
+        }
+        .text{
+            margin-top: 0.1rem;
+            /* font-family: 'Medium'; */
+            font-size: .3rem;
+            color: rgb(254, 254, 254);
+            text-transform: uppercase;
+            line-height: 1.333;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+            <img src="./img/loading.png" alt="" class="load  ">
+            <div class="text">
+                <div>调制中</div>
+                <div>即将生成绝对专属风味瓶</div>
+            </div>
+    </div>
+    
+            
+</body>
+<script src="./js/jq.min.js"></script>
+<script src="./js/loadImg.js"></script>
+<script>
+    $(document).on('touchmove', function(event) {
+      event.preventDefault();
+    });
+    window.onload=function () {
+        document.fonts.ready.then(function() {
+            var loader = new resLoader({
+        resources: [
+            './img/bg-2.png'
+        ],
+        onStart: function (total) {
+        },
+        onProgress: function (current, total) {
+        },
+        onComplete: function (total) {
+            imgComplete = true;
+            $('body').show()
+        }
+        });
+        loader.start();
+        $('.load').addClass('wobble animated')
+        setTimeout(function () {
+          window.location.replace('result.html');
+        }, 2000);
+    })
+    }
+
+</script>
+
+</html>

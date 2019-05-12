@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绝对鲜造专属风味瓶</title>
+    <link rel="stylesheet" href="./css/animate.css">
+    <script>
+        // ! function (designWidth) {
+        //     if (/Android(?:\s+|\/)(\d+\.\d+)?/.test(navigator.userAgent)) {
+        //         var version = parseFloat(RegExp.$1);
+        //         if (version > 2.3) {
+        //             var phoneScale = parseInt(window.screen.width) / designWidth;
+        //             document.write('<meta name="viewport" content="width=' + designWidth + ',minimum-scale=' +
+        //                 phoneScale + ',maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi">');
+        //         } else {
+        //             document.write('<meta name="viewport" content="width=' + designWidth +
+        //                 ',target-densitydpi=device-dpi">');
+        //         }
+        //     } else {
+        //         document.write('<meta name="viewport" content="width=' + designWidth +
+        //             ',user-scalable=no,target-densitydpi=device-dpi,minimal-ui,viewport-fit=cover">');
+        //     }
+        // }(750);
+        (function (designWidth, maxWidth) {
+            var doc = document,
+                win = window,
+                docEl = doc.documentElement,
+                remStyle = document.createElement("style"),
+                tid;
+
+            function refreshRem() {
+                var width = docEl.getBoundingClientRect().width;
+                maxWidth = maxWidth || 540;
+                width > maxWidth && (width = maxWidth);
+                var rem = width * 100 / designWidth;
+                remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+            }
+            if (docEl.firstElementChild) {
+                docEl.firstElementChild.appendChild(remStyle);
+            } else {
+                var wrap = doc.createElement("div");
+                wrap.appendChild(remStyle);
+                doc.write(wrap.innerHTML);
+                wrap = null;
+            }
+            //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+            refreshRem();
+            win.addEventListener("resize", function () {
+                clearTimeout(tid); //防止执行两次
+                tid = setTimeout(refreshRem, 300);
+            }, false);
+
+            win.addEventListener("pageshow", function (e) {
+                if (e.persisted) { // 浏览器后退的时候重新计算
+                    clearTimeout(tid);
+                    tid = setTimeout(refreshRem, 300);
+                }
+            }, false);
+            if (doc.readyState === "complete") {
+                doc.body.style.fontSize = "16px";
+            } else {
+                doc.addEventListener("DOMContentLoaded", function (e) {
+                    doc.body.style.fontSize = "16px";
+                }, false);
+            }
+        })(750, 750);
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+        @font-face {
+            font-family: 'GB';
+            src: url('./font/china/FZLTZCHJW.TTF')
+        }
+      	@font-face {
+            font-family: 'bold';
+            src: url('./font/english/Absolut-Bold.otf');
+        }
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #e42eff;
+            position: relative;
+            font-family: 'GB';
+        }
+
+        body {
+            display: none;
+            background: url('./img/bg-4.png') center top no-repeat;
+            background-size: 100% auto;
+            position: relative;
+            text-align: center
+        }
+        .body{
+            width: 100%;
+            height: 100%;
+            display: flex
+        }
+        .auto{
+            height: 9.8rem;
+            margin: auto
+        }
+        .img{
+            margin-left: 0.3rem;
+            width: 3.8rem;
+        }
+        .price{
+            width: 2.3rem;
+            height: .36rem;
+            background: #271cfc;
+            margin: .4rem 0 0 3rem;
+        }
+        .text{
+            font-size: .46rem;
+            color: #fff;
+            font-weight: bolder;
+            line-height: 1px;
+          	font-family: 'bold';
+        }
+        .btns{
+            width: 100%;
+            margin: .6rem auto 0;
+            position: relative;
+        }
+        .btns img{
+            width: 42%;
+        }
+        .scale{
+            transform: scale(.8);
+            margin-top: 0;
+            margin-bottom: -.5rem;
+        }
+        .back {
+          position: absolute;
+          left: 4%;
+        }
+        .next {
+          position: absolute;
+          right: 4%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body">
+        <div class="auto">
+        <img src="./img/package.png" alt="" class="img">
+        <div class="price">
+            <div class="text animated fadeInDown">
+                <div>售价:159</div>
+            </div>
+        </div>
+        <div class="btns">
+            <img src="./img/back.png" alt="" class="back">
+            <img src="./img/next.png" alt="" class="next">
+        </div>
+    </div>
+    </div>
+    <script src="./js/jq.min.js"></script>
+    <script>
+        $(document).on('touchmove', function(event) {
+          event.preventDefault();
+        });
+        window.onload=function () {
+            $('body').show()
+            var ua = navigator.userAgent,
+                isTablet = /(?:iPad|PlayBook|pad)/i.test(ua);
+            if (isTablet) {
+                // $('.box').addClass('pad-trans')
+                $('.img').addClass('scale')
+            };
+            $('.back').click(function () {
+                window.location.replace('make.html');
+             })
+            $('.next').click(function () {
+                window.location.replace('qrcode.html');
+             })
+            
+        }
+    </script>
+</body>
+
+</html>

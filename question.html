@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绝对鲜造专属风味瓶</title>
+    <link rel="stylesheet" href="./css/animate.css">
+    <script>
+        (function (designWidth, maxWidth) {
+            var doc = document,
+                win = window,
+                docEl = doc.documentElement,
+                remStyle = document.createElement("style"),
+                tid;
+
+            function refreshRem() {
+                var width = docEl.getBoundingClientRect().width;
+                maxWidth = maxWidth || 540;
+                width > maxWidth && (width = maxWidth);
+                var rem = width * 100 / designWidth;
+                remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+            }
+            if (docEl.firstElementChild) {
+                docEl.firstElementChild.appendChild(remStyle);
+            } else {
+                var wrap = doc.createElement("div");
+                wrap.appendChild(remStyle);
+                doc.write(wrap.innerHTML);
+                wrap = null;
+            }
+            //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+            refreshRem();
+            win.addEventListener("resize", function () {
+                clearTimeout(tid); //防止执行两次
+                tid = setTimeout(refreshRem, 300);
+            }, false);
+
+            win.addEventListener("pageshow", function (e) {
+                if (e.persisted) { // 浏览器后退的时候重新计算
+                    clearTimeout(tid);
+                    tid = setTimeout(refreshRem, 300);
+                }
+            }, false);
+            if (doc.readyState === "complete") {
+                doc.body.style.fontSize = "16px";
+            } else {
+                doc.addEventListener("DOMContentLoaded", function (e) {
+                    doc.body.style.fontSize = "16px";
+                }, false);
+            }
+        })(750, 750);
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+        @font-face {
+            font-family: 'normal';
+            src: url('./font/china/SourceHanSansCN-Normal.otf')
+        }
+        @font-face{
+            font-family: 'GB';
+            src:url('./font/china/FZLTZCHJW.TTF')
+        }
+        @font-face{
+            font-family: 'Bold';
+            src: url('./font/china/SourceHanSansCN-Medium.otf'),
+                 url('./font/english/Absolut-Bold.otf'),
+                 url('./font/english/Absolut-Bold.svg')
+        }
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #e42eff;
+        }
+        body {
+            display: none;
+            background: url('./img/bg2-new.png') center top no-repeat;
+            background-size: 100% auto;
+        }
+        .box {
+            width: 4.8rem;
+            /* height: 8rem; */
+            position: relative;
+            left: 50%;
+            top: 49%;
+            margin: -4rem 0 0 -2.08rem;
+            z-index: 10;
+            font-family: 'GB';
+        }
+        @media screen and (min-width: 700px) {
+            .box {
+                width: 4.8rem;
+                /* height: 8rem; */
+                position: relative;
+                left: 50%;
+                top: 49%;
+                margin: -4rem 0 0 -2.4rem;
+                z-index: 10;
+                font-family: 'GB';
+            }
+        } 
+        .text .tit{
+            height: 1.1rem;
+            background: url('./img/question-tit.png') center no-repeat;
+            background-size: cover;
+        }
+        .h4 {
+            font-size: .4rem;
+            color: #fff;
+            font-weight: bold;
+            border-bottom: .33rem solid #0000ff;
+            line-height: 0px;
+            margin-top: 13px;
+            text-align: center
+        }
+        .q {
+            width: 100%;
+            background: #0000ff;
+            margin-top: .5rem;
+            overflow: hidden;
+            position: relative;
+            height: 6.85rem;
+        }
+        .fan {
+            position: absolute;
+            right: -1.25rem;
+            top: -1.25rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: #00ff48;
+        }
+        .ul {
+            /* margin: 1rem 0 0 .45rem; */
+        }
+        .ul li {
+            margin-top: .28rem;
+            position: relative;
+        }
+        @media screen and (max-width: 700px) {
+          .imgs {
+            position: absolute;
+            left: 0;
+            top: 4.9rem;
+            width: 100%;
+            z-index: 10;
+          }
+        }
+        @media screen and (min-width: 700px) {
+          .imgs {
+            position: absolute;
+            left: -0.4rem;
+            top: 3.9rem;
+            width: 100%;
+            z-index: 10;
+          }
+        }
+        
+        .imgs img {
+          display: block;
+          margin-bottom: .2rem;
+          width: 100%;
+        }
+        .ul .select {
+            width: .52rem;
+            height: .8rem;
+            background: url('./img/bottle.png') no-repeat;
+            background-size: contain;
+            position: absolute;
+            top: -0.25rem;
+            left: -.16rem;
+        }
+        .load {
+            display: none;
+            width: 1.08rem;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+            -webkit-animation-iteration-count: 2;
+            animation-iteration-count:2
+        }
+        
+        @media (max-width: 375px) {
+          .q {
+            height: 6.4rem;
+          }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="text">
+            <!-- <div class="h4">这里有六款合你心情的风</div>
+            <div class="h4">味糖浆你现在的心情是?</div> -->
+            <div class="tit"></div>
+        </div>
+        <div class="q">
+            <div class="fan"></div>
+        </div>
+    </div>
+    <div class='imgs'>
+      <img data-name='CHINABEAUTY' src='img/font/f1.png' />
+      <img data-name='BEACHBEAUTY' src='img/font/f2.png' />
+      <img data-name='GENTLEMAN' src='img/font/f3.png' />
+      <img data-name='JAPANESESWEETIE' src='img/font/f4.png' />
+      <img data-name='ROCKSTAR' src='img/font/f5.png' />
+      <img data-name='ITALIANORCHARD' src='img/font/f6.png' />
+    </div>
+    <img src="./img/loading.png" alt="" class="load wobble animated">
+</body>
+<script src="./js/jq.min.js"></script>
+<script src="./js/loadImg.js"></script>
+<script>
+    $(document).on('touchmove', function(event) {
+      event.preventDefault();
+    });
+    window.onload=function () {
+        document.fonts.ready.then(function() {
+        var loader = new resLoader({
+        resources: [
+            './img/bg2-new.png',
+            './img/loading.png',
+            './img/bg-2green.png',
+            './img/bottle.png',
+            './img/question-tit.png'
+        ],
+        onStart: function (total) {
+        },
+        onProgress: function (current, total) {
+        },
+        onComplete: function (total) {
+            imgComplete = true;
+            $('body').show()
+        }
+        });
+        loader.start();
+        $('.ul .icon').removeClass('select');
+        $('.imgs img').click(function () {
+            $('.box').hide()
+            $('.load').show()
+            var i = $(this).index()
+            localStorage.setItem('select',i)
+            sessionStorage.setItem("name", $(this).data('name'));
+            setTimeout(function () {
+                window.location.replace('animate.html');
+            }, 300);
+        });
+        })
+    }
+</script>
+
+</html>
