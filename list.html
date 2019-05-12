@@ -2,362 +2,338 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>绝对鲜造专属风味瓶</title>
-    <link rel="stylesheet" href="./css/animate.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>绝对鲜造专属风味瓶</title>
+  <link rel="stylesheet" href="./css/animate.css">
 
-    <script>
-        ! function (designWidth) {
-            if (/Android(?:\s+|\/)(\d+\.\d+)?/.test(navigator.userAgent)) {
-                var version = parseFloat(RegExp.$1);
-                if (version > 2.3) {
-                    var phoneScale = parseInt(window.screen.width) / designWidth;
-                    document.write('<meta name="viewport" content="width=' + designWidth + ',minimum-scale=' +
-                        phoneScale + ',maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi">');
-                } else {
-                    document.write('<meta name="viewport" content="width=' + designWidth +
-                        ',target-densitydpi=device-dpi">');
-                }
-            } else {
-                document.write('<meta name="viewport" content="width=' + designWidth +
-                    ',user-scalable=no,target-densitydpi=device-dpi,minimal-ui,viewport-fit=cover">');
-            }
-        }(750);
-        (function (designWidth, maxWidth) {
-            var doc = document,
-                win = window,
-                docEl = doc.documentElement,
-                remStyle = document.createElement("style"),
-                tid;
+  <script>
+    ! function (designWidth) {
+      if (/Android(?:\s+|\/)(\d+\.\d+)?/.test(navigator.userAgent)) {
+        var version = parseFloat(RegExp.$1);
+        if (version > 2.3) {
+          var phoneScale = parseInt(window.screen.width) / designWidth;
+          document.write('<meta name="viewport" content="width=' + designWidth + ',minimum-scale=' +
+            phoneScale + ',maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi">');
+        } else {
+          document.write('<meta name="viewport" content="width=' + designWidth +
+            ',target-densitydpi=device-dpi">');
+        }
+      } else {
+        document.write('<meta name="viewport" content="width=' + designWidth +
+          ',user-scalable=no,target-densitydpi=device-dpi,minimal-ui,viewport-fit=cover">');
+      }
+    }(750);
+    (function (designWidth, maxWidth) {
+      var doc = document,
+        win = window,
+        docEl = doc.documentElement,
+        remStyle = document.createElement("style"),
+        tid;
 
-            function refreshRem() {
-                var width = docEl.getBoundingClientRect().width;
-                maxWidth = maxWidth || 540;
-                width > maxWidth && (width = maxWidth);
-                var rem = width * 100 / designWidth;
-                remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
-            }
-            if (docEl.firstElementChild) {
-                docEl.firstElementChild.appendChild(remStyle);
-            } else {
-                var wrap = doc.createElement("div");
-                wrap.appendChild(remStyle);
-                doc.write(wrap.innerHTML);
-                wrap = null;
-            }
-            //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
-            refreshRem();
-            win.addEventListener("resize", function () {
-                clearTimeout(tid); //防止执行两次
-                tid = setTimeout(refreshRem, 300);
-            }, false);
+      function refreshRem() {
+        var width = docEl.getBoundingClientRect().width;
+        maxWidth = maxWidth || 540;
+        width > maxWidth && (width = maxWidth);
+        var rem = width * 100 / designWidth;
+        remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+      }
+      if (docEl.firstElementChild) {
+        docEl.firstElementChild.appendChild(remStyle);
+      } else {
+        var wrap = doc.createElement("div");
+        wrap.appendChild(remStyle);
+        doc.write(wrap.innerHTML);
+        wrap = null;
+      }
+      //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+      refreshRem();
+      win.addEventListener("resize", function () {
+        clearTimeout(tid); //防止执行两次
+        tid = setTimeout(refreshRem, 300);
+      }, false);
 
-            win.addEventListener("pageshow", function (e) {
-                if (e.persisted) { // 浏览器后退的时候重新计算
-                    clearTimeout(tid);
-                    tid = setTimeout(refreshRem, 300);
-                }
-            }, false);
-            if (doc.readyState === "complete") {
-                doc.body.style.fontSize = "16px";
-            } else {
-                doc.addEventListener("DOMContentLoaded", function (e) {
-                    doc.body.style.fontSize = "16px";
-                }, false);
-            }
-        })(750, 750);
-    </script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box
+      win.addEventListener("pageshow", function (e) {
+        if (e.persisted) { // 浏览器后退的时候重新计算
+          clearTimeout(tid);
+          tid = setTimeout(refreshRem, 300);
         }
-        @font-face {
-            font-family: 'eng';
-            src: url('./font/english/Absolut-Medium.ttf'),
-                url('./font/english/Absolut-Medium.eot'),
-                url('./font/english/Absolut-Medium.woff'),
-                url('./font/english/Absolut-Regular.svg');
-        }
-        @font-face {
-            font-family: 'chi';
-            src: url('./font/china/FZLTZCHJW.TTF'),
-                 url('./font/china/SourceHanSansCN-Normal.otf')
-        }
-        @font-face{
-            font-family: 'Medium';
-            src: url('./font/china/SourceHanSansCN-Medium.otf')
-        }
-        @font-face {
-            font-family: 'GB';
-            src: url('./font/china/FZLTZCHJW.TTF')
-        }
-        div,span,p{
-            font-family: 'eng';
-            font-weight: blod;
-        }
+      }, false);
+      if (doc.readyState === "complete") {
+        doc.body.style.fontSize = "16px";
+      } else {
+        doc.addEventListener("DOMContentLoaded", function (e) {
+          doc.body.style.fontSize = "16px";
+        }, false);
+      }
+    })(750, 750);
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
 
-        html,
-        body {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            background: #e42eff;
-        }
+    @font-face {
+      font-family: 'eng';
+      src: url('./font/english/Absolut-Medium.ttf'),
+        url('./font/english/Absolut-Medium.eot'),
+        url('./font/english/Absolut-Medium.woff'),
+        url('./font/english/Absolut-Regular.svg');
+    }
 
-        body {
-            background: url('./img/bg-21.png') center -50px no-repeat;
-            background-size: 100% auto;
-            position: relative;
-            display: flex;
-        }
+    @font-face {
+      font-family: 'chi';
+      src: url('./font/china/FZLTZCHJW.TTF'),
+        url('./font/china/SourceHanSansCN-Normal.otf')
+    }
 
-        .box {
-            width: 600px;
-            height: 780px;
-            margin: auto;
-            background: #271dfc;
-            position: relative;
-            left: 30px;
-            top: 0.5rem;
-            padding: 8px;
-            display: none;
-        }
+    @font-face {
+      font-family: 'Medium';
+      src: url('./font/china/SourceHanSansCN-Medium.otf')
+    }
 
-        .ab {
-            width: 100%;
-            height: 100%;
-            background: url('./img/textab.png') no-repeat;
-            background-size: 100% 100%;
-            padding: .34rem;
-        }
+    @font-face {
+      font-family: 'GB';
+      src: url('./font/china/FZLTZCHJW.TTF')
+    }
 
-        .content {
-            padding: 20px;
-            width: 99%;
-            height: 100%;
-            background: #fff;
-            display: flex;
-            flex-direction: column;
-        }
+    div,
+    span,
+    p {
+      font-family: 'eng';
+      font-weight: blod;
+    }
 
-        .row {
-            flex: 1;
-            display: flex;
-            justify-content: space-around
-        }
+    html,
+    body {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #e42eff;
+    }
 
-        .bot {
-            flex: 1;
-            padding: 12px;
-        }
+    body {
+      background: url('./img/bg-21.png') center -50px no-repeat;
+      background-size: 100% auto;
+      position: relative;
+      display: flex;
+    }
 
-        .bot-img {
-            width: 124px;
-            height: 282px;
-            background: url('./img/bot.png') no-repeat;
-            margin: auto;
-        }
+    .box {
+      width: 600px;
+      height: 780px;
+      margin: auto;
+      background: #271dfc;
+      position: relative;
+      left: 30px;
+      top: 0.5rem;
+      padding: 8px;
+      display: none;
+    }
 
-        .bot-text {
-            font-size: .2rem;
-            font-weight: bold;
-            color: #fff;
-            position: relative;
-            top: 170px;
-            text-align: center;
-            z-index: 10;
-            font-family: 'Medium';
-        }
+    .ab {
+      width: 100%;
+      height: 100%;
+      background: url('./img/textab.png') no-repeat;
+      background-size: 100% 100%;
+      padding: .34rem;
+    }
 
-        .bot-desc {
-            background: #271dfc;
-            color: #fff;
-            font-size: .22rem;
-            text-align: center;
-            margin-top: 8px;
-        }
+    .content {
+      padding: 20px;
+      width: 99%;
+      height: 100%;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
 
-        .block {
-            width: 120px;
-            height: 140px;
-            position: relative;
-            top: 111px;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
-        }
+    .row {
+      flex: 1;
+      display: flex;
+      justify-content: space-around
+    }
 
-        .b1{
-            background: url('./img/b1.png') no-repeat;
-        }
-        .b6{
-            background: #DF2C12
-        }
-        .b2 {
-            background: url('./img/b2.png') no-repeat;
-        }
+    .b5 {
+      background: url('./img/b5.png') no-repeat
+    }
 
-        .b3 {
-            background: url('./img/b3.png') no-repeat
-        }
+    .footer {
+      color: #fff;
+      font-size: .4rem;
+      font-weight: bold;
+      text-align: center;
+      position: absolute;
+      bottom: -1rem;
+      left: 0;
+      width: 100%;
+      font-family: 'GB';
+    }
 
-        .b4 {
-            background: url('./img/b4.png') no-repeat
-        }
+    .tit {
+      padding: 0 14px;
+      border-bottom: 30px solid #271dfc;
+    }
 
-        .b5 {
-            background: url('./img/b5.png') no-repeat
-        }
-        .footer{
-            color: #fff;
-            font-size: .4rem;
-            font-weight: bold;
-            text-align: center;
-            position: absolute;
-            bottom: -1rem;
-            left: 0;
-            width: 100%;
-            font-family: 'GB';
-        }
-        .tit{
-            padding: 0 14px;
-            border-bottom: 30px solid #271dfc;
-        }
-        .t{
-            position: relative;
-            bottom: -26px
-        }
-        .pad-bot{
-            bottom: .6rem
-        }
-        .displayNone{
-            display: none
-        }
-        .bot1{
-            background: url('./img/mulan.png') center no-repeat
-        }
-        .bot2{
-            background: url('./img/lanping.png') center no-repeat;
-        }
-        .bot3{
-            background: url('./img/shui.png') center no-repeat;
-        }
-        .bot4{
-            background: url('./img/fenwo.png') center no-repeat;
-        }
-        .bot5{
-            background: url('./img/moshui.png') center no-repeat;
-        }
-        .bot6{
-            background: url('./img/benminghong.png') center no-repeat;
-        }
+    .t {
+      position: relative;
+      bottom: -26px
+    }
 
-        @media only screen and (min-device-width : 375px) and (max-device-width : 412px) {
-            .box {
-                top: 1.9rem;
-            }
-        }
-        @media only screen and (min-device-width : 412px) and (max-device-width : 768px) {
-            .box {
-                top: 0.5rem;
-            }
-        }
-        @media only screen and (min-device-width : 375px) and (min-device-height : 800px) {
-            .box {
-                top: -0.7rem;
-                /*top: 0rem;*/
-            }
-        }
-    </style>
+    .pad-bot {
+      bottom: .6rem
+    }
+
+    .displayNone {
+      display: none
+    }
+
+    .bot1 {
+      background: url('./img/mulan.png') center no-repeat
+    }
+
+    .bot2 {
+      background: url('./img/lanping.png') center no-repeat;
+    }
+
+    .bot3 {
+      background: url('./img/shui.png') center no-repeat;
+    }
+
+    .bot4 {
+      background: url('./img/fenwo.png') center no-repeat;
+    }
+
+    .bot5 {
+      background: url('./img/moshui.png') center no-repeat;
+    }
+
+    .bot6 {
+      background: url('./img/benminghong.png') center no-repeat;
+    }
+
+    @media only screen and (min-device-width : 375px) and (max-device-width : 412px) {
+      .box {
+        top: 1.9rem;
+      }
+    }
+
+    @media only screen and (min-device-width : 412px) and (max-device-width : 768px) {
+      .box {
+        top: 0.5rem;
+      }
+    }
+
+    @media only screen and (min-device-width : 375px) and (min-device-height : 800px) {
+      .box {
+        top: -0.7rem;
+        /*top: 0rem;*/
+      }
+    }
+
+    @media screen and (min-width: 750px) {
+      body {
+        background: url('./img/pad/list.png') center center no-repeat;
+        background-size: 100% 100%;
+        text-align: center
+      }
+
+      .pad-bot {
+        bottom: -0.9rem
+      }
+
+      .box {
+        left: 1vw;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="box">
-        <div class="ab">
-            <div class="content">
-                <div class="row">
-                    <div class="bot bot1" data-index="0" data-name='CHINABEAUTY'>
-                    </div>
-                    <div class="bot bot2" data-index="1" data-name='BEACHBEAUTY'>
-                    </div>
-                    <div class="bot bot3" data-index="2" data-name='GENTLEMAN'>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="bot bot4" data-index="3" data-name='JAPANESESWEETIE'>
-                    </div>
-                    <div class="bot bot5" data-index="4" data-name='ROCKSTAR'>
-                    </div>
-                    <div class="bot bot6" data-index="5" data-name='ITALIANORCHARD'>
-                    </div>
-                </div>
-            </div>
+  <div class="box">
+    <div class="ab">
+      <div class="content">
+        <div class="row">
+          <div class="bot bot1" data-index="0" data-name='CHINABEAUTY'>
+          </div>
+          <div class="bot bot2" data-index="1" data-name='BEACHBEAUTY'>
+          </div>
+          <div class="bot bot3" data-index="2" data-name='GENTLEMAN'>
+          </div>
         </div>
-        <div class="footer">
-                <img src="./img/which.png" alt="">
-            </div>
+        <div class="row">
+          <div class="bot bot4" data-index="3" data-name='JAPANESESWEETIE'>
+          </div>
+          <div class="bot bot5" data-index="4" data-name='ROCKSTAR'>
+          </div>
+          <div class="bot bot6" data-index="5" data-name='ITALIANORCHARD'>
+          </div>
+        </div>
+      </div>
     </div>
-    <script src="./js/jq.min.js"></script>
-    <script src="./js/loadImg.js"></script>
-    <script>
-        alert($(window).width())
-        alert($(window).height())
-        $(document).on('touchmove', function(event) {
-          event.preventDefault();
-        });
-        window.onload=function () {
-            var loader = new resLoader({
-            resources: [
-                './img/bg-21.png',
-                './img/mulan.png',
-                './img/lanping.png',
-                './img/shui.png',
-                './img/fenwo.png',
-                './img/moshui.png',
-                './img/benminghong.png'
-            ],
-            onStart: function (total) {
-            },
-            onProgress: function (current, total) {
-            },
-            onComplete: function (total) {
-                imgComplete = true;
-                $('.box').show()
-            }
-            });
-            loader.start();
-            var ua = navigator.userAgent,
-                isTablet = /(?:iPad|PlayBook|pad)/i.test(ua);
-            if (isTablet) {
-                $('.footer').addClass('pad-bot')
-            };
-            $('.bot').click(function () { 
-                var index=$(this).data('index')
-                sessionStorage.setItem("name", $(this).data('name'));
-                window.localStorage.setItem('select',index)
-                window.location.replace('make.html');
-             })
+    <div class="footer">
+      <img src="./img/which.png" alt="">
+    </div>
+  </div>
+  <script src="./js/jq.min.js"></script>
+  <script src="./js/loadImg.js"></script>
+  <script>
+    $(document).on('touchmove', function (event) {
+      event.preventDefault();
+    });
+    window.onload = function () {
+      var loader = new resLoader({
+        resources: [
+          './img/bg-21.png',
+          './img/mulan.png',
+          './img/lanping.png',
+          './img/shui.png',
+          './img/fenwo.png',
+          './img/moshui.png',
+          './img/benminghong.png'
+        ],
+        onStart: function (total) {
+        },
+        onProgress: function (current, total) {
+        },
+        onComplete: function (total) {
+          imgComplete = true;
+          $('.box').show()
         }
-    </script>
-    <script>
-        var _jcq = _jcq || [];
-        _jcq.enableHeatmap = true;
-        _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
-        _jcq.push(['_pageview']);
+      });
+      loader.start();
+      var ua = navigator.userAgent,
+        isTablet = /(?:iPad|PlayBook|pad)/i.test(ua);
+      if (isTablet) {
+        $('.footer').addClass('pad-bot')
+      };
+      $('.bot').click(function () {
+        var index = $(this).data('index')
+        sessionStorage.setItem("name", $(this).data('name'));
+        window.localStorage.setItem('select', index)
+        window.location.replace('make.html');
+      })
+    }
+  </script>
+  <script>
+    var _jcq = _jcq || [];
+    _jcq.enableHeatmap = true;
+    _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
+    _jcq.push(['_pageview']);
 
-        (function() {
-        var jc = document.createElement('script'); jc.async = true;
-        jc.src = '//' + 'cdn.jice.io/js/jice.min.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(jc, s);
-        })();
-    </script>
+    (function () {
+      var jc = document.createElement('script'); jc.async = true;
+      jc.src = '//' + 'cdn.jice.io/js/jice.min.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jc, s);
+    })();
+  </script>
 </body>
 
 </html>
