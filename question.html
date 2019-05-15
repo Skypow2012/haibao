@@ -97,8 +97,9 @@
             font-family: 'GB';
         }
         .text .tit{
-            height: 1.1rem;
-            background: url('./img/question-tit.png') center no-repeat;
+            width: 100%;
+            height: auto;
+            background: url(./img/question-tit.png) center no-repeat;
             background-size: cover;
         }
         .h4 {
@@ -113,7 +114,7 @@
         .q {
             width: 100%;
             background: #0000ff;
-            margin-top: .5rem;
+            margin-top: 1rem;
             overflow: hidden;
             position: relative;
             height: 6.85rem;
@@ -127,33 +128,20 @@
             border-radius: 50%;
             background: #00ff48;
         }
-        .ul {
-            /* margin: 1rem 0 0 .45rem; */
-        }
-        .ul li {
-            margin-top: .28rem;
-            position: relative;
-        }
         .imgs {
           position: absolute;
           left: 0;
-          top: 4.5rem;
+          top: 1rem;
           width: 100%;
           z-index: 10;
         }
         .imgs img {
           display: block;
-          margin-bottom: .2rem;
           width: 100%;
         }
-        .ul .select {
-            width: .52rem;
-            height: .8rem;
+        .imgs .select {
             background: url('./img/bottle.png') no-repeat;
             background-size: contain;
-            position: absolute;
-            top: -0.25rem;
-            left: -.16rem;
         }
         .load {
             display: none;
@@ -175,27 +163,12 @@
           }
         }
         @media only screen and (min-device-width : 375px) and (max-device-width : 412px) {
-            .imgs {
-                top: 4rem;
-            }
         }
         @media only screen and (min-device-width : 412px) and (max-device-width : 768px) {
-            /*.imgs {
-                top: 4.6rem;
-            }*/
         }
         @media only screen and (min-device-width : 375px) and (min-device-height : 800px) {
             .box {
                 top: 6.3rem;
-            }
-            .imgs {
-                top: 5rem;
-                /*top: 5.2rem;*/
-            }
-        }
-        @media only screen and (min-device-width : 375px) and (max-device-height : 800px) {
-            .imgs {
-                top: 4.6rem;
             }
         }
         @media screen and (min-device-width: 750px) {
@@ -233,19 +206,19 @@
     <div class="text">
       <!-- <div class="h4">这里有六款合你心情的风</div>
             <div class="h4">味糖浆你现在的心情是?</div> -->
-      <div class="tit"></div>
+        <img src="./img/question-tit.png" class="tit">
     </div>
     <div class="q">
       <div class="fan"></div>
+      <div class='imgs'>
+        <img data-name='CHINABEAUTY' src='img/font/f1.png' />
+        <img data-name='BEACHBEAUTY' src='img/font/f2.png' />
+        <img data-name='GENTLEMAN' src='img/font/f3.png' />
+        <img data-name='JAPANESESWEETIE' src='img/font/f4.png' />
+        <img data-name='ROCKSTAR' src='img/font/f5.png' />
+        <img data-name='ITALIANORCHARD' src='img/font/f6.png' />
+      </div>
     </div>
-  </div>
-  <div class='imgs'>
-    <img data-name='CHINABEAUTY' src='img/font/f1.png' />
-    <img data-name='BEACHBEAUTY' src='img/font/f2.png' />
-    <img data-name='GENTLEMAN' src='img/font/f3.png' />
-    <img data-name='JAPANESESWEETIE' src='img/font/f4.png' />
-    <img data-name='ROCKSTAR' src='img/font/f5.png' />
-    <img data-name='ITALIANORCHARD' src='img/font/f7.png' />
   </div>
   <img src="./img/loading.png" alt="" class="load wobble animated">
 </body>
@@ -277,13 +250,17 @@
         loader.start();
         $('.ul .icon').removeClass('select');
         $('.imgs img').click(function () {
-            $('.box').hide()
-            $('.imgs').hide()
-            $('.load').show()
             var i = $(this).index()
             localStorage.setItem('select',i)
             sessionStorage.setItem("name", $(this).data('name'));
-            window.location.replace('animate.html');
+            var imgs = $('.imgs img').removeClass('select');
+            $(this).addClass('select');
+            setTimeout(function(){
+                $('.box').hide()
+                $('.imgs').hide()
+                $('.load').show()
+                window.location.replace('animate.html');
+            }, 1500)
         });
         })
     }
