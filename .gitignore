@@ -6,7 +6,8 @@
 .pnp.js
 
 # testing
-/img
+/img/*
+!/img/broken_line/
 
 # production
 /font
