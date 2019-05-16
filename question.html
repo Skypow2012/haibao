@@ -328,7 +328,7 @@
             $('.ul .icon').removeClass('select');
             $('.imgs img').click(function () {
 
-                var i = $(this).index();
+                var i = $(this).parent().index();
                 $('.imgs div').removeClass('select');
                 $(this).parent().addClass('select');
                 setTimeout(() => {
