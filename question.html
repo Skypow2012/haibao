@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>绝对鲜造专属风味瓶</title>
     <link rel="stylesheet" href="./css/animate.css">
-    <script async="" src="//cdn.jice.io/js/jice.min.js"></script>
     <script>
         (function (designWidth, maxWidth) {
             var doc = document,
@@ -53,12 +53,6 @@
             }
         })(750, 750);
     </script>
-    <style></style>
-    <style>
-        html {
-            font-size: 55.2px;
-        }
-    </style>
     <style>
         * {
             margin: 0;
@@ -79,8 +73,8 @@
         @font-face {
             font-family: 'Bold';
             src: url('./font/china/SourceHanSansCN-Medium.otf'),
-                url('./font/english/Absolut-Bold.otf'),
-                url('./font/english/Absolut-Bold.svg')
+            url('./font/english/Absolut-Bold.otf'),
+            url('./font/english/Absolut-Bold.svg')
         }
 
         html,
@@ -174,7 +168,6 @@
         }
 
         .imgs img {
-            position: relative;
             display: block;
             width: 90%;
             margin: 0 auto;
@@ -270,129 +263,126 @@
             }
         }
     </style>
-    <script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>&gt;
 </head>
 
-<body style="font-size: 16px; display: block;">
-    <div class="box">
-        <div class="text">
-            <!-- <div class="h4">这里有六款合你心情的风</div>
+<body>
+<div class="box">
+    <div class="text">
+        <!-- <div class="h4">这里有六款合你心情的风</div>
               <div class="h4">味糖浆你现在的心情是?</div> -->
-            <img src="./img/question-tit.png" class="tit">
-        </div>
-        <div class="q">
-            <div class="fan"></div>
-            <div class="imgs">
-                <div>
-                    <img data-name="CHINABEAUTY" src="img/font/f1.png">
-                </div>
-                <div>
-                    <img data-name="BEACHBEAUTY" src="img/font/f2.png">
-                </div>
-                <div>
-                    <img data-name="GENTLEMAN" src="img/font/f3.png">
-                </div>
-                <div>
-                    <img data-name="JAPANESESWEETIE" src="img/font/f4.png">
-                </div>
-                <div>
-                    <img data-name="ROCKSTAR" src="img/font/f5.png">
-                </div>
-                <div>
-                    <img data-name="ITALIANORCHARD" src="img/font/f6.png">
-                </div>
+        <img src="./img/question-tit.png" class="tit"></img>
+    </div>
+    <div class="q">
+        <div class="fan"></div>
+        <div class="imgs">
+            <div>
+                <img data-name="CHINABEAUTY" src="img/font/f1.png">
+            </div>
+            <div>
+                <img data-name="BEACHBEAUTY" src="img/font/f2.png">
+            </div>
+            <div>
+                <img data-name="GENTLEMAN" src="img/font/f3.png">
+            </div>
+            <div>
+                <img data-name="JAPANESESWEETIE" src="img/font/f4.png">
+            </div>
+            <div>
+                <img data-name="ROCKSTAR" src="img/font/f5.png">
+            </div>
+            <div>
+                <img data-name="ITALIANORCHARD" src="img/font/f6.png">
             </div>
         </div>
     </div>
+</div>
 
-    <img src="./img/loading.png" alt="" class="load wobble animated">
-
-    <script src="./js/jq.min.js"></script>
-    <script src="./js/loadImg.js"></script>
-    <script>
-        $(document).on('touchmove', function (event) {
-            event.preventDefault();
-        });
-        window.onload = function () {
-            document.fonts.ready.then(function () {
-                var loader = new resLoader({
-                    resources: [
-                        './img/bg2-new.png',
-                        './img/loading.png',
-                        './img/bg-2green.png',
-                        './img/bottle.png',
-                        './img/question-tit.png'
-                    ],
-                    onStart: function (total) {
-                    },
-                    onProgress: function (current, total) {
-                    },
-                    onComplete: function (total) {
-                        imgComplete = true;
-                        $('body').show()
-                    }
-                });
-                loader.start();
-                $('.ul .icon').removeClass('select');
-                $('.imgs img').click(function () {
-                    var i = $(this).index();
-                    sessionStorage.setItem("name", $(this).data('name'));
-                    $('.imgs div').removeClass('select');
-                    $(this).parent().addClass('select');
-                    setTimeout(() => {
-                        $('.box').hide();
-                        $('.imgs').hide();
-                        $('.load').show();
-                        localStorage.setItem('select', i);
-                        sessionStorage.setItem("name", $(this).data('name'));
-                        window.location.replace('animate.html');
-                    }, 800)
-                });
-            })
-        }
-
-        var _jcq = _jcq || [];
-        _jcq.enableHeatmap = true;
-        _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
-        _jcq.push(['_profile', JSON.parse(window.localStorage.getItem('profile')) || {}]);
-        _jcq.push(['_track', "page", {
-            title: "绝对鲜造专属风味瓶question",    //页面标题
-            urlquery: "",    //url参数
-            url: "absolutsyrup.pernod-ricard-china.com/question.html"    //页面url
-        }]);
-        (function () {
-            var jc = document.createElement('script');
-            jc.async = true;
-            jc.src = '//' + 'cdn.jice.io/js/jice.min.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jc, s);
-        })();
-
-        $('.imgs img').on('click', function () {
-            var index = $(this).index();
-            switch (index) {
-                case 0:
-                    _jcq.push(['_track', "bhv_lp_step01_answer01"]);
-                    return;
-                case 1:
-                    _jcq.push(['_track', "bhv_lp_step01_answer02"]);
-                    return;
-                case 2:
-                    _jcq.push(['_track', "bhv_lp_step01_answer03"]);
-                    return;
-                case 3:
-                    _jcq.push(['_track', "bhv_lp_step01_answer04"]);
-                    return;
-                case 4:
-                    _jcq.push(['_track', "bhv_lp_step01_answer05"]);
-                    return;
-                case 5:
-                    _jcq.push(['_track', "bhv_lp_step01_answer06"]);
-                    return;
-            }
-        });
-    </script>
-    <script src="./js/wxSdk.js"></script>
+<img src="./img/loading.png" alt="" class="load wobble animated">
 </body>
+<script src="./js/jq.min.js"></script>
+<script src="./js/loadImg.js"></script>
+<script>
+    $(document).on('touchmove', function (event) {
+        event.preventDefault();
+    });
+    window.onload = function () {
+        document.fonts.ready.then(function () {
+            var loader = new resLoader({
+                resources: [
+                    './img/bg2-new.png',
+                    './img/loading.png',
+                    './img/bg-2green.png',
+                    './img/bottle.png',
+                    './img/question-tit.png'
+                ],
+                onStart: function (total) {
+                },
+                onProgress: function (current, total) {
+                },
+                onComplete: function (total) {
+                    imgComplete = true;
+                    $('body').show()
+                }
+            });
+            loader.start();
+            $('.ul .icon').removeClass('select');
+            $('.imgs img').click(function () {
 
+                var i = $(this).index();
+                $('.imgs div').removeClass('select');
+                $(this).parent().addClass('select');
+                setTimeout(() => {
+                    $('.box').hide();
+                    $('.imgs').hide();
+                    $('.load').show();
+                    localStorage.setItem('select', i);
+                    sessionStorage.setItem("name", $(this).data('name'));
+                    window.location.replace('animate.html');
+                }, 800)
+            });
+        })
+    }
+
+    var _jcq = _jcq || [];
+    _jcq.enableHeatmap = true;
+    _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
+    _jcq.push(['_profile', JSON.parse(window.localStorage.getItem('profile')) || {}]);
+    _jcq.push(['_track', "page", {
+        title: "绝对鲜造专属风味瓶question",    //页面标题
+        urlquery: "",    //url参数
+        url: "absolutsyrup.pernod-ricard-china.com/question.html"    //页面url
+    }]);
+    (function () {
+        var jc = document.createElement('script');
+        jc.async = true;
+        jc.src = '//' + 'cdn.jice.io/js/jice.min.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(jc, s);
+    })();
+
+    $('.imgs img').on('click', function () {
+        var index = $(this).index();
+        switch (index) {
+            case 0:
+                _jcq.push(['_track', "bhv_lp_step01_answer01"]);
+                return;
+            case 1:
+                _jcq.push(['_track', "bhv_lp_step01_answer02"]);
+                return;
+            case 2:
+                _jcq.push(['_track', "bhv_lp_step01_answer03"]);
+                return;
+            case 3:
+                _jcq.push(['_track', "bhv_lp_step01_answer04"]);
+                return;
+            case 4:
+                _jcq.push(['_track', "bhv_lp_step01_answer05"]);
+                return;
+            case 5:
+                _jcq.push(['_track', "bhv_lp_step01_answer06"]);
+                return;
+        }
+    });
+</script>
+<script src="./js/wxSdk.js"></script>
 </html>
