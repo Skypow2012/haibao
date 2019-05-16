@@ -22,6 +22,7 @@
                 var rem = width * 100 / designWidth;
                 remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
             }
+
             if (docEl.firstElementChild) {
                 docEl.firstElementChild.appendChild(remStyle);
             } else {
@@ -58,10 +59,12 @@
             padding: 0;
             box-sizing: border-box
         }
-        @font-face{
+
+        @font-face {
             font-family: 'Medium';
             src: url('./font/china/SourceHanSansCN-Medium.otf')
         }
+
         html,
         body {
             width: 100%;
@@ -99,14 +102,17 @@
             -webkit-animation-iteration-count: 2;
             animation-iteration-count: 2
         }
-        .load{
+
+        .load {
             width: 1.08rem;
         }
-        .make{
+
+        .make {
             width: 2.5rem;
             margin-top: .16rem
         }
-        .text{
+
+        .text {
             margin-top: 0.1rem;
             /* font-family: 'Medium'; */
             font-size: .3rem;
@@ -129,56 +135,63 @@
 </head>
 
 <body>
-    <div class="box">
-            <img src="./img/loading.png" alt="" class="load  ">
-            <div class="text">
-                <div>调制中</div>
-                <div>即将生成绝对专属风味瓶</div>
-            </div>
+<div class="box">
+    <img src="./img/loading.png" alt="" class="load  ">
+    <div class="text">
+        <div>调制中</div>
+        <div>即将生成绝对专属风味瓶</div>
     </div>
-    
-            
+</div>
+
+
 </body>
 <script src="./js/jq.min.js"></script>
 <script src="./js/loadImg.js"></script>
 <script>
-    $(document).on('touchmove', function(event) {
-      event.preventDefault();
+    $(document).on('touchmove', function (event) {
+        event.preventDefault();
     });
-    window.onload=function () {
-        document.fonts.ready.then(function() {
+    window.onload = function () {
+        document.fonts.ready.then(function () {
             var loader = new resLoader({
-        resources: [
-            './img/bg-2.png'
-        ],
-        onStart: function (total) {
-        },
-        onProgress: function (current, total) {
-        },
-        onComplete: function (total) {
-            imgComplete = true;
-            $('body').show()
-        }
-        });
-        loader.start();
-        $('.load').addClass('wobble animated')
-        setTimeout(function () {
-          window.location.replace('result.html');
-        }, 2000);
-    })
+                resources: [
+                    './img/bg-2.png'
+                ],
+                onStart: function (total) {
+                },
+                onProgress: function (current, total) {
+                },
+                onComplete: function (total) {
+                    imgComplete = true;
+                    $('body').show()
+                }
+            });
+            loader.start();
+            $('.load').addClass('wobble animated')
+            setTimeout(function () {
+                window.location.replace('result.html');
+            }, 2000);
+        })
     }
 
     var _jcq = _jcq || [];
     _jcq.enableHeatmap = true;
     _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
-    _jcq.push(['_pageview']);
 
-    (function() {
-    var jc = document.createElement('script'); jc.async = true;
-    jc.src = '//' + 'cdn.jice.io/js/jice.min.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(jc, s);
+    _jcq.push(['_profile', JSON.parse(window.localStorage.getItem('profile')) || {}]);
+    _jcq.push(['_track', "page", {
+        title: "绝对鲜造专属风味瓶ani",    //页面标题
+        urlquery: "",    //url参数
+        url: "absolutsyrup.pernod-ricard-china.com/animate.html"    //页面url
+    }]);
+
+    (function () {
+        var jc = document.createElement('script');
+        jc.async = true;
+        jc.src = '//' + 'cdn.jice.io/js/jice.min.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(jc, s);
     })();
 </script>
-
+<script src="./js/wxSdk.js"></script>
 </html>

@@ -2,290 +2,363 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>绝对鲜造专属风味瓶</title>
-  <link rel="stylesheet" href="./css/animate.css">
-  <script>
-    ! function (designWidth) {
-      if (/Android(?:\s+|\/)(\d+\.\d+)?/.test(navigator.userAgent)) {
-        var version = parseFloat(RegExp.$1);
-        if (version > 2.3) {
-          var phoneScale = parseInt(window.screen.width) / designWidth;
-          document.write('<meta name="viewport" content="width=' + designWidth + ',minimum-scale=' +
-            phoneScale + ',maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi">');
-        } else {
-          document.write('<meta name="viewport" content="width=' + designWidth +
-            ',target-densitydpi=device-dpi">');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绝对鲜造专属风味瓶</title>
+    <link rel="stylesheet" href="./css/animate.css">
+    <script>
+        var _jcq = _jcq || [];
+        _jcq.enableHeatmap = true;
+        _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
+        _jcq.push(['_profile', JSON.parse(window.localStorage.getItem('profile')) || {}]);
+        var imgName = sessionStorage.getItem("name");
+        let title = '绝对鲜造专属风味瓶qrCode';
+        switch (imgName) {
+            case 'BEACHBEAUTY':
+                title += '-2'
+                break;
+            case 'CHINABEAUTY':
+                title += '-1'
+                break;
+            case 'GENTLEMAN':
+                title += '-3'
+                break;
+            case 'JAPANESESWEETIE':
+                title += '-4'
+                break;
+            case 'ITALIANORCHARD':
+                title += '-6'
+                break;
+            case 'ROCKSTAR':
+                title += '-5'
+                break;
+            default:
+                break;
         }
-      } else {
-        document.write('<meta name="viewport" content="width=' + designWidth +
-          ',user-scalable=no,target-densitydpi=device-dpi,minimal-ui,viewport-fit=cover">');
-      }
-    }(750);
-    (function (designWidth, maxWidth) {
-      var doc = document,
-        win = window,
-        docEl = doc.documentElement,
-        remStyle = document.createElement("style"),
-        tid;
 
-      function refreshRem() {
-        var width = docEl.getBoundingClientRect().width;
-        maxWidth = maxWidth || 540;
-        width > maxWidth && (width = maxWidth);
-        var rem = width * 100 / designWidth;
-        remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
-      }
-      if (docEl.firstElementChild) {
-        docEl.firstElementChild.appendChild(remStyle);
-      } else {
-        var wrap = doc.createElement("div");
-        wrap.appendChild(remStyle);
-        doc.write(wrap.innerHTML);
-        wrap = null;
-      }
-      //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
-      refreshRem();
-      win.addEventListener("resize", function () {
-        clearTimeout(tid); //防止执行两次
-        tid = setTimeout(refreshRem, 300);
-      }, false);
+        _jcq.push(['_track', "page", {
+            title: title,    //页面标题
+            urlquery: "",    //url参数
+            url: "absolutsyrup.pernod-ricard-china.com/qrcode.html"    //页面url
+        }]);
+        (function () {
+            var jc = document.createElement('script');
+            jc.async = true;
+            jc.src = '//' + 'cdn.jice.io/js/jice.min.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jc, s);
+        })();
+        !function (designWidth) {
+            if (/Android(?:\s+|\/)(\d+\.\d+)?/.test(navigator.userAgent)) {
+                var version = parseFloat(RegExp.$1);
+                if (version > 2.3) {
+                    var phoneScale = parseInt(window.screen.width) / designWidth;
+                    document.write('<meta name="viewport" content="width=' + designWidth + ',minimum-scale=' +
+                        phoneScale + ',maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi">');
+                } else {
+                    document.write('<meta name="viewport" content="width=' + designWidth +
+                        ',target-densitydpi=device-dpi">');
+                }
+            } else {
+                document.write('<meta name="viewport" content="width=' + designWidth +
+                    ',user-scalable=no,target-densitydpi=device-dpi,minimal-ui,viewport-fit=cover">');
+            }
+        }(750);
+        (function (designWidth, maxWidth) {
+            var doc = document,
+                win = window,
+                docEl = doc.documentElement,
+                remStyle = document.createElement("style"),
+                tid;
 
-      win.addEventListener("pageshow", function (e) {
-        if (e.persisted) { // 浏览器后退的时候重新计算
-          clearTimeout(tid);
-          tid = setTimeout(refreshRem, 300);
+            function refreshRem() {
+                var width = docEl.getBoundingClientRect().width;
+                maxWidth = maxWidth || 540;
+                width > maxWidth && (width = maxWidth);
+                var rem = width * 100 / designWidth;
+                remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+            }
+
+            if (docEl.firstElementChild) {
+                docEl.firstElementChild.appendChild(remStyle);
+            } else {
+                var wrap = doc.createElement("div");
+                wrap.appendChild(remStyle);
+                doc.write(wrap.innerHTML);
+                wrap = null;
+            }
+            //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+            refreshRem();
+            win.addEventListener("resize", function () {
+                clearTimeout(tid); //防止执行两次
+                tid = setTimeout(refreshRem, 300);
+            }, false);
+
+            win.addEventListener("pageshow", function (e) {
+                if (e.persisted) { // 浏览器后退的时候重新计算
+                    clearTimeout(tid);
+                    tid = setTimeout(refreshRem, 300);
+                }
+            }, false);
+            if (doc.readyState === "complete") {
+                doc.body.style.fontSize = "16px";
+            } else {
+                doc.addEventListener("DOMContentLoaded", function (e) {
+                    doc.body.style.fontSize = "16px";
+                }, false);
+            }
+        })(750, 750);
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
         }
-      }, false);
-      if (doc.readyState === "complete") {
-        doc.body.style.fontSize = "16px";
-      } else {
-        doc.addEventListener("DOMContentLoaded", function (e) {
-          doc.body.style.fontSize = "16px";
-        }, false);
-      }
-    })(750, 750);
-  </script>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box
-    }
 
-    @font-face {
-      font-family: 'GB';
-      src: url('./font/china/FZLTZCHJW.TTF')
-    }
+        @font-face {
+            font-family: 'GB';
+            src: url('./font/china/FZLTZCHJW.TTF')
+        }
 
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      background: #e42eff;
-      position: relative;
-      font-family: 'GB';
-    }
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #e42eff;
+            position: relative;
+            font-family: 'GB';
+        }
 
-    body {
-      display: none;
-      background: url('./img/bg-5.png') center -90px no-repeat;
-      background-size: 100% auto;
-      position: relative;
-      text-align: center
-    }
+        body {
+            display: none;
+            background: url('./img/bg-5.png') center -100px no-repeat;
+            background-size: 100% auto;
+            position: relative;
+            text-align: center
+        }
 
-    .box {
-      width: 4.3rem;
-      height: 4.3rem;
-      background: #271dfc;
-      margin: 3.5rem auto 0
-    }
+        .box {
+            width: 4.3rem;
+            height: 4.3rem;
+            background: #271dfc;
+            margin: 3.5rem auto 0
+        }
 
-    .ab {
-      width: 100%;
-      height: 100%;
-      padding: 8px;
-    }
+        .ab {
+            width: 100%;
+            height: 100%;
+            padding: 8px;
+        }
 
-    .border {
-      width: 100%;
-      height: 100%;
-      background: url('./img/textab.png') no-repeat;
-      background-size: 100% 99%;
-      padding: .3rem;
-    }
+        .border {
+            width: 100%;
+            height: 100%;
+            background: url('./img/textab.png') no-repeat;
+            background-size: 100% 99%;
+            padding: .3rem;
+        }
 
-    .code {
-      width: 100%;
-      height: 100%;
-      background: #fff;
-    }
+        .code {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+        }
 
-    .text {
-      text-align: center;
-      letter-spacing: 1px
-    }
+        .text {
+            text-align: center;
+            letter-spacing: 1px
+        }
 
-    .msg {
-      border-bottom: 32px solid #271dfc;
-      color: #fff;
-      font-size: .4rem;
-      font-weight: bold;
-      padding: 0 10px;
-      ;
-      font-family: 'GB'
-    }
+        .msg {
+            border-bottom: 32px solid #271dfc;
+            color: #fff;
+            font-size: .4rem;
+            font-weight: bold;
+            padding: 0 10px;;
+            font-family: 'GB'
+        }
 
-    .info {
-      position: relative;
-      bottom: -28px;
-      letter-spacing: 2px;
-    }
+        .info {
+            position: relative;
+            bottom: -28px;
+            letter-spacing: 2px;
+        }
 
-    .pad {
-      margin-top: 2rem
-    }
+        .pad {
+            margin-top: 2rem
+        }
 
-    .code img {
-      width: 100%;
-      margin-top: -2px;
-      margin-left: -5px;
-    }
+        .code img {
+            width: 100%;
+            margin-top: -2px;
+            margin-left: -5px;
+        }
 
-    .hidden {
-      display: none
-    }
+        .hidden {
+            display: none
+        }
 
-    #qrcode-text-pad {
-        display: none;
-        width: 100vw;
-        position: relative;
-        left: -3vw;
-        top: 5vw;
-      }
+        #qrcode-text-pad {
+            display: none;
+            width: 100vw;
+            position: relative;
+            left: -3vw;
+            top: 5vw;
+        }
 
-    @media screen and (min-device-width: 750px) {
-      body {
-        background: url('./img/pad/qrcode.png') center center no-repeat;
-        background-size: 100% 100%;
-      }
+        @media screen and (min-device-width: 750px) {
+            body {
+                background: url('./img/pad/qrcode.png') center center no-repeat;
+                background-size: 100% 100%;
+            }
 
-      .pad {
-        margin-top: 2.5rem
-      }
+            .pad {
+                margin-top: 2.5rem
+            }
 
-      #qrcode-text-pad {
-        display: block
-      }
-    }
-  </style>
+            #qrcode-text-pad {
+                display: block
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="box">
+<div class="box">
     <div class="ab">
-      <div class="border">
-        <div class="code">
-          <img src="./img/bk.png" alt="">
+        <div class="border">
+            <div class="code">
+                <img src="./img/bk.png" alt="">
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div class="text">
+</div>
+<div class="text">
     <img src="./img/longtouch.png" alt="" id="qrcode-text">
     <img src="./img/pad/qrcode_text.png" alt="" id="qrcode-text-pad">
-  </div>
-  <script src="./js/jq.min.js"></script>
-  <script>
+</div>
+<script src="./js/jq.min.js"></script>
+<script>
     $(document).on('touchmove', function (event) {
-      event.preventDefault();
+        event.preventDefault();
     });
-    var imgName = sessionStorage.getItem("name");
-    window.onload = function () {
-      $('.code img').attr('src', 'img/code/mobile/' + imgName + '.jpeg');
-      $('body').show()
-      var ua = window.navigator.userAgent.toLowerCase();
-      isTablet = /(?:iPad|PlayBook|pad)/.test(ua);
-      if (isTablet) {
-        $('.box').addClass('pad');
-        document.getElementById('qrcode-text-pad').style.display = 'block';
-        document.getElementById('qrcode-text').style.display = 'none';
-        $('.code img').attr('src', 'img/code/pad/' + imgName + '.jpeg');
-      };
-      if (ua.match(/MicroMessenger/i) == 'micromessenger') {
-        $('.info').text('长按识别图中小程序码准备付款')
-      } else {
-        $('.info').text('微信扫描二维码准备付款')
-      }
 
-      document.getElementById('qrcode-text-pad').addEventListener('touchend', function () {
-        switch (imgName) {
-          case 'BEACHBEAUTY':
-            _jcq.push(['_track', "bhv_lp_step05_QRCODE_02"]);
-            break;
-          case 'CHINABEAUTY':
-            _jcq.push(['_track', "bhv_lp_step05_QRCODE_01"]);
-            break;
-          case 'GENTLEMAN':
-            _jcq.push(['_track', "bhv_lp_step05_QRCODE_03"]);
-            break;
-          case 'JAPANESESWEETIE':
-            _jcq.push(['_track', "bhv_lp_step05_QRCODE_04"]);
-            break;
-          case 'ITALIANORCHARD':
-            _jcq.push(['_track', "bhv_lp_step05_QRCODE_06"]);
-            break;
-          case 'ROCKSTAR':
-            _jcq.push(['_track', "bhv_lp_step05_QRCODE_05"]);
-            break;
-          default:
-            break;
+
+    /**
+     * 获取url参数
+     * @param paraName 参数名
+     * @returns {string}
+     * @constructor
+     */
+    function GetUrlParam(paraName) {
+        var url = document.location.toString();
+        var arrObj = url.split("?");
+
+        if (arrObj.length > 1) {
+            var arrPara = arrObj[1].split("&");
+            var arr;
+
+            for (var i = 0; i < arrPara.length; i++) {
+                arr = arrPara[i].split("=");
+
+                if (arr != null && arr[0] == paraName) {
+                    return arr[1];
+                }
+            }
+            return "";
+        } else {
+            return "";
         }
-      })
-      document.getElementById('qrcode-text').addEventListener('touchend', function () {
-        switch (imgName) {
-          case 'BEACHBEAUTY':
-            _jcq.push(['_track', "bhv_lp_step05_QRCODE_02"]);
-            break;
-          case 'CHINABEAUTY':
-            _jcq.push(['_track', "bhv_lp_step05_QRCODE_01"]);
-            break;
-          case 'GENTLEMAN':
-            _jcq.push(['_track', "bhv_lp_step05_QRCODE_03"]);
-            break;
-          case 'JAPANESESWEETIE':
-            _jcq.push(['_track', "bhv_lp_step05_QRCODE_04"]);
-            break;
-          case 'ITALIANORCHARD':
-            _jcq.push(['_track', "bhv_lp_step05_QRCODE_06"]);
-            break;
-          case 'ROCKSTAR':
-            _jcq.push(['_track', "bhv_lp_step05_QRCODE_05"]);
-            break;
-          default:
-            break;
-        }
-      })
-
-      var _jcq = _jcq || [];
-      _jcq.enableHeatmap = true;
-      _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
-      _jcq.push(['_pageview']);
-
-      (function () {
-        var jc = document.createElement('script'); jc.async = true;
-        jc.src = '//' + 'cdn.jice.io/js/jice.min.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(jc, s);
-      })();
     }
-  </script>
+
+    var imgName = GetUrlParam('imgname');
+
+    window.onload = function () {
+        wx.hideMenuItems({
+            menuList: ['menuItem:share:appMessage', 'menuItem:favorite']
+        })
+        $('.code img').attr('src', 'img/code/mobile/' + imgName + '.jpeg');
+        $('body').show()
+        var ua = window.navigator.userAgent.toLowerCase();
+        isTablet = /(?:iPad|PlayBook|pad)/.test(ua);
+        const isWx = (ua.match(/MicroMessenger/i) == "micromessenger");
+        if (isTablet || !isWx) {
+            if (isTablet) {
+                $('.box').addClass('pad');
+            }
+            document.getElementById('qrcode-text-pad').style.display = 'block';
+            document.getElementById('qrcode-text').style.display = 'none';
+            $('.code img').attr('src', 'img/code/pad/' + imgName + '.jpeg');
+        }
+
+        // if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+        //     $('.info').text('长按识别图中小程序码准备付款')
+        // } else {
+        //     $('.info').text('微信扫描二维码准备付款')
+        // }
+
+        var time = 0;//初始化起始时间
+
+
+        $(".ab").on({
+            touchstart: function (e) {
+                var id = $(this).data("id");
+                longClick = 0;//设置初始为0
+                timeOutEvent = setTimeout(function () {
+                    //此处为长按事件-----在此显示遮罩层及删除按钮
+                    send()
+                }, 500);
+            },
+            touchmove: function () {
+                clearTimeout(timeOutEvent);
+                timeOutEvent = 0;
+            },
+            touchend: function (e) {
+                clearTimeout(timeOutEvent);
+                return false;
+            }
+        });
+
+        function showCloseImg(index) {
+            var e = $("#imgDiv").find(".image").eq(index);
+            $(".deleteImg").hide();
+            e.next().show();
+        }
+
+        function send() {
+            switch (imgName) {
+                case 'BEACHBEAUTY':
+                    _jcq.push(['_track', "bhv_lp_step05_QRCODE_02"]);
+                    break;
+                case 'CHINABEAUTY':
+                    _jcq.push(['_track', "bhv_lp_step05_QRCODE_01"]);
+                    break;
+                case 'GENTLEMAN':
+                    _jcq.push(['_track', "bhv_lp_step05_QRCODE_03"]);
+                    break;
+                case 'JAPANESESWEETIE':
+                    _jcq.push(['_track', "bhv_lp_step05_QRCODE_04"]);
+                    break;
+                case 'ITALIANORCHARD':
+                    _jcq.push(['_track', "bhv_lp_step05_QRCODE_06"]);
+                    break;
+                case 'ROCKSTAR':
+                    _jcq.push(['_track', "bhv_lp_step05_QRCODE_05"]);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+    }
+</script>
+<script src="./js/wxSdk.js"></script>
 </body>
 
 </html>

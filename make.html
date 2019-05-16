@@ -108,8 +108,8 @@
 
     body {
       display: none;
-      background: url('./img/bg-3.png') center -50px no-repeat;
-      background-size: 100% auto;
+      background: url('./img/bg-3.png') center 0 no-repeat;
+      background-size: 100vw 100vh;
       position: relative;
       text-align: center;
     }
@@ -178,8 +178,8 @@
 
     @-webkit-keyframes shake {
       from {
-        -webkit-transform: scale(1);
-        transform: scale(1)
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5)
       }
 
       to {
@@ -190,8 +190,8 @@
 
     @keyframes shake {
       from {
-        -webkit-transform: scale(1);
-        transform: scale(1)
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5)
       }
 
       to {
@@ -272,7 +272,7 @@
       width: .1rem;
       height: .78rem;
       position: absolute;
-      left: 0.38rem;
+      left: 0.36rem;
       top: 3.14rem;
     }
 
@@ -286,8 +286,8 @@
 
     .line-list {
       position: absolute;
-      top: 399px;
-      left: 69px;
+      top: 398px;
+      left: 67.5px;
       width: 67px;
       height: 28px;
       /* background: red; */
@@ -328,7 +328,7 @@
       width: 67px;
       height: 84px;
       position: absolute;
-      left: 68px;
+      left: 67.5px;
       top: 314px;
     }
 
@@ -500,7 +500,7 @@
     }
     @media only screen and (min-device-width : 375px) and (max-device-height : 800px) {
       .flex {
-        bottom: 1rem;
+        bottom: 2rem;
       }
     }
     @media screen and (min-device-width: 750px) {
@@ -522,7 +522,7 @@
         width: 100%;
         height: 100%;
         position: relative;
-        top: -0.2rem
+        top: -0.3rem
       }
 
       .desc {
@@ -665,6 +665,7 @@
                 $('.line-list').slideDown()
                 setTimeout(function () {
                   window.location.replace('confirm.html');
+
                 }, 1000)
               }, 300)
             }, 200)
@@ -676,7 +677,13 @@
     var _jcq = _jcq || [];
     _jcq.enableHeatmap = true;
     _jcq.push(['_setAccount', '01beb89c4d814414a1a58d7ad7c8f94c']);
-    _jcq.push(['_pageview']);
+    _jcq.push(['_profile', JSON.parse(window.localStorage.getItem('profile')) || {}]);
+
+    _jcq.push(['_track', "page", {
+      title: "绝对鲜造专属风味瓶make",    //页面标题
+      urlquery: "",    //url参数
+      url: "absolutsyrup.pernod-ricard-china.com/make.html"    //页面url
+    }]);
 
     (function () {
       var jc = document.createElement('script'); jc.async = true;
@@ -709,6 +716,7 @@
         }
     });
   </script>
+  <script src="./js/wxSdk.js"></script>
 </body>
 
 </html>
